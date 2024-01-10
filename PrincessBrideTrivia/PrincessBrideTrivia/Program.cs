@@ -6,6 +6,8 @@ public class Program
     {
         string filePath = GetFilePath();
         Question[] questions = LoadQuestions(filePath);
+  
+        
 
         int numberCorrect = 0;
         for (int i = 0; i < questions.Length; i++)
@@ -66,8 +68,9 @@ public class Program
     public static Question[] LoadQuestions(string filePath)
     {
         string[] lines = File.ReadAllLines(filePath);
-
+        
         Question[] questions = new Question[lines.Length / 5];
+       
         for (int i = 0; i < questions.Length; i++)
         {
             int lineIndex = i * 5;
@@ -86,6 +89,7 @@ public class Program
             question.Answers[1] = answer2;
             question.Answers[2] = answer3;
             question.CorrectAnswerIndex = correctAnswerIndex;
+            questions[i] = question;
         }
         return questions;
     }
