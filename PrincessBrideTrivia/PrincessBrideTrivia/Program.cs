@@ -23,9 +23,9 @@ public class Program
 
     public static string GetPercentCorrect(int numberCorrectAnswers, int numberOfQuestions)
     {
-        double calc = ((double)numberCorrectAnswers / numberOfQuestions) * 100;
-        double roundedCalc = Math.Round(calc, 0);
-        if(roundedCalc < 51)
+        double calcCorrect = ((double)numberCorrectAnswers / numberOfQuestions) * 100;
+        double roundedCalcCorrect = Math.Round(calcCorrect, 0);
+        if(roundedCalcCorrect < 51)
         {
             Console.WriteLine("Maybe you should watch the movie again.");
         }
@@ -33,7 +33,7 @@ public class Program
         {
             Console.WriteLine("Nice job :)");
         }
-        return roundedCalc + "%";
+        return roundedCalcCorrect + "%";
     }
 
     public static bool AskQuestion(Question question)
