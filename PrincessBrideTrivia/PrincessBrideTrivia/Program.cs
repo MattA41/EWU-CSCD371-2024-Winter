@@ -25,6 +25,14 @@ public class Program
     {
         double calc = ((double)numberCorrectAnswers / numberOfQuestions) * 100;
         double roundedCalc = Math.Round(calc, 0);
+        if(roundedCalc < 51)
+        {
+            Console.WriteLine("Maybe you should watch the movie again.");
+        }
+        else
+        {
+            Console.WriteLine("Nice job :)");
+        }
         return roundedCalc + "%";
     }
 
