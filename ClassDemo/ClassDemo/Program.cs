@@ -8,7 +8,7 @@ public class Program
     public bool Login(string username, string password)
     {
         //throw new NotImplementedException();
-        if(username == "Inigo.Montoya" && password == "goodpassword")
+        if((username == "Inigo.Montoya" || username == "Princess.Buttercup") && password == "goodpassword")
         {
             return true;
         }

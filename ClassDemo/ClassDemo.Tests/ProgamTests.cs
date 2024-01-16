@@ -30,4 +30,20 @@ public class ProgramTests
         
         Assert.False(_Program.Login(username, password));
     }
+
+    [Fact]
+    public void Login_PrincessButtercupWithGoodPassword_SuccsessfulLogin()
+    {
+        string username = "Princess.Buttercup";
+        string password = "goodpassword";
+
+        Assert.True( _Program.Login(username, password));
+    }
+    [Fact]
+    public void Login_PrincessbuttercupWithGoodPassword_FailedLogin()
+    {
+        string username = "Princess.Buttercup";
+        string password = "goodpassword";
+        Assert.False( _Program.Login(username, password));
+    }
 }
