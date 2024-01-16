@@ -43,7 +43,7 @@ public class ProgramTests
     public void Login_PrincessbuttercupWithGoodPassword_FailedLogin()
     {
         string username = "Princess.Buttercup";
-        string password = "goodpassword";
+        string password = "badpassword";
         Assert.False( _Program.Login(username, password));
     }
 }
