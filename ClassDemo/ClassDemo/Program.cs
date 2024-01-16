@@ -14,7 +14,7 @@ public class Program
         if ((username == "Inigo.Montoya" || username == "Princess.Buttercup") && password == "goodpassword")
         {
             return true;
-        };
+        }
         return false;
     }
 }
