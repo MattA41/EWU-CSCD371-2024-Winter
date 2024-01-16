@@ -4,11 +4,11 @@ namespace ClassDemo.Tests;
 // ClassNameTests
 public class ProgramTests
 {
-    Program _Program;
+    Program Program { get; set; }
 
     public ProgramTests()
     {
-        _Program = TestInitialize();
+        Program = TestInitialize();
     }
 
     int _InstanceCount = 0;
@@ -17,17 +17,22 @@ public class ProgramTests
     {
         return new Program();
     }
+    [Theory]
+    [InlineData("Inigo.Montoya", "goodpassword")]
+    [InlineData("Princess.Buttercup", "goodpassword")]
+    [InlineData("Count.Rugen", "goodpassword")]
+    public void TryLogin_WithGoodPassword_SucessfulLogin(string username, string password)
+    {
+        Assert.True(Program.TryLogin(username, password)); 
+    }
 
     [Fact]
     // MethodUnderTest_ConditionUnderTest_ExpectedResult
     public void Login_InigoMontoyaWithGoodPassword_SuccessfulLogin()
     {
         Assert.Equal(0, _InstanceCount);
-        string username = "Inigo.Montoya";
-        string password = "goodpassword";
-        _InstanceCount ++;
-
-        Assert.True(_Program.Login(username, password));
+        _InstanceCount++;
+        Assert.True(Program.TryLogin("Inigo.Montoya", "goodpassword"));
     }
 
     [Fact]
@@ -35,29 +40,25 @@ public class ProgramTests
     {
         Assert.Equal(0, _InstanceCount);
         _InstanceCount++;
-
-        Assert.False(_Program.Login("Inigo.Montoya", "badpassword"));
+        Assert.False(Program.TryLogin("Inigo.Montoya", "badpassword"));
     }
     [Fact]
-    public void Login_PrincessButtercupWithGoodPassword_SucessfulLogin()
+    public void Login_PrincessButtercupWithGoodPassword_SuccessfulLogin()
     {
         Assert.Equal(0, _InstanceCount);
-        string username = "Princess.Buttercup";
-        string password = "goodpassword";
         _InstanceCount++;
-
-        Assert.True(_Program.Login(username, password));
+        Assert.True(Program.TryLogin(username: "Princess.Buttercup", password: "goodpassword"));
 
     }
     [Fact]
-    public void Login_PrincessButtercupWithGoodPassword_FailedLogin()
+    public void Login_PrincessButtercupWithBadPassword_FailedLogin()
     {
-        Assert.Equal(0, _InstanceCount);
-        string username = "Princess.Buttercup";
-        string password = "badpassword";
-        _InstanceCount++;
-
-        Assert.False(_Program.Login(username, password));
+        Assert.Throws<InvalidOperationException>(() => Program.Login(username: "Princess.Buttercup", password: "badpassword"));
 
     }
+    
+ 
+
+
+
 }
