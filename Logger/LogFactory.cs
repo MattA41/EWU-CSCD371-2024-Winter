@@ -1,16 +1,12 @@
-﻿namespace Logger;
+﻿using System;
+using System.Runtime.CompilerServices;
 
-public class LogFactory :BaseLogger
+namespace Logger;
+
+public class LogFactory
 {
     public BaseLogger CreateLogger(string className)
     {
-        this.className = className;
-        return null;
+        return NotImplementedException;
     }
-
-    public override void Log(LogLevel logLevel, string message)
-    {
-        throw new System.NotImplementedException();
-    }
-
 }
