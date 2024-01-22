@@ -7,6 +7,7 @@ public class LogFactory
 {
     public BaseLogger CreateLogger(string className)
     {
-        return NotImplementedException;
+        string className2 = " ";
+        return new FileLogger(className2);
     }
 }
