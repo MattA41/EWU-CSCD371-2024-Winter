@@ -9,19 +9,20 @@ namespace Logger.Tests;
 public class LogFactoryTests
 {
     [TestMethod]
-    public void Test_ConfigureFileLogger_Good_Value(String filePath)
+    public void Test_ConfigureFileLogger_Good_Value()
     {
         LogFactory factory = new LogFactory();
-        factory.ConfigureFileLogger(filePath);
+        factory.ConfigureFileLogger("C:");
         factory.CreateLogger(nameof(Test_ConfigureFileLogger_Good_Value));
         Assert.IsNotNull(factory);
     }
     [TestMethod]
     public void Test_CreateLogger_WithNullFilepath()
     {
-        LogFactory fa = new LogFactory();
-        fa.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath));
-        Assert.IsNull(fa);
+        LogFactory factory = new LogFactory(); 
+        factory.ConfigureFileLogger(null);
+        factory.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath));
+        Assert.IsNull(factory);
     }
     
 
