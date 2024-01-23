@@ -30,7 +30,7 @@ namespace Logger
             
         }
 
-        public string LogToString(LogLevel logLevel, string message, string className)
+        public static string LogToString(LogLevel logLevel, string message, string className)
         {
             string logString = DateTime.Now.ToString("MMM dd yyyy, hh:mm:ss");
             logString = logString + className + logLevel + message;
