@@ -36,7 +36,7 @@ public class BaseLoggerMixinsTests
 
 }
 
-public class TestLogger : BaseLogger
+public class TestLogger : BaseLogger 
 {
     public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
 
@@ -50,8 +50,5 @@ public class TestLogger : BaseLogger
     {
         LoggedMessages.Add((logLevel, message));
     }
-    public void Error(string message, int num)
-    {
-        
-    }
+    
 }

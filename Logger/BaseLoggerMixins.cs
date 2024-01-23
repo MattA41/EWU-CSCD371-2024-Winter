@@ -4,7 +4,7 @@ namespace Logger;
 
 public static class BaseLoggerMixins
 {
-    public static void Error(BaseLogger? logger, string message, params object[] arguments)
+    public static void Error(this BaseLogger? logger, string message, params object[] arguments)
     {
         if(logger == null)
         {
@@ -16,10 +16,10 @@ public static class BaseLoggerMixins
         }
         else
         {
-            logger.Log(LogLevel.Error, message + string.Join("", arguments));
+            logger.Log(LogLevel.Error, message + string.Join(" ", arguments));
         }
     }
-    public static void Warning(BaseLogger? logger, string message, params object[] arguments)
+    public static void Warning(this BaseLogger? logger, string message, params object[] arguments)
     {
         if (logger == null)
         {
@@ -31,10 +31,10 @@ public static class BaseLoggerMixins
         }
         else
         {
-            logger.Log(LogLevel.Warning, message + string.Join("", arguments));
+            logger.Log(LogLevel.Warning, message + string.Join(" ", arguments));
         }
     }
-    public static void Information(BaseLogger? logger, string message, params object[] arguments)
+    public static void Information(this BaseLogger? logger, string message, params object[] arguments)
     {
         if (logger == null)
         {
@@ -46,10 +46,10 @@ public static class BaseLoggerMixins
         }
         else
         {
-            logger.Log(LogLevel.Information, message + string.Join("", arguments));
+            logger.Log(LogLevel.Information, message + string.Join(" ", arguments));
         }
     }
-    public static void Debug(BaseLogger? logger, string message, params object[] arguments)
+    public static void Debug(this BaseLogger? logger, string message, params object[] arguments)
     {
         if (logger == null)
         {
@@ -61,7 +61,7 @@ public static class BaseLoggerMixins
         }
         else
         {
-            logger.Log(LogLevel.Debug, message + string.Join("", arguments));
+            logger.Log(LogLevel.Debug, message + string.Join(" ", arguments));
         }
     }
 
