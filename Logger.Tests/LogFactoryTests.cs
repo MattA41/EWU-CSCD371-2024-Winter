@@ -16,6 +16,13 @@ public class LogFactoryTests
         factory.CreateLogger(nameof(Test_ConfigureFileLogger_Good_Value));
         Assert.IsNotNull(factory);
     }
+    [TestMethod]
+    public void Test_CreateLogger_WithNullFilepath()
+    {
+        LogFactory fa = new LogFactory();
+        fa.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath));
+        Assert.IsNull(fa);
+    }
     
 
 }

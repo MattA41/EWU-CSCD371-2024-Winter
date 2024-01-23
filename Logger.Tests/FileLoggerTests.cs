@@ -16,10 +16,5 @@ public class FileLoggerTests
         Assert.IsFalse(fileLogger.filePath == null);
 
     }
-    [TestMethod]
-    public void Test_FilePath_String_True()
-    {
-        
-        
-    }
+    
 }
