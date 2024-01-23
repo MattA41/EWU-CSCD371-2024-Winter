@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace Logger;
@@ -10,7 +11,9 @@ public class LogFactory
     {
         if (_filePath == null)
         {
-            return null;
+#pragma warning disable CS8603 // Possible null reference return. Project calls for null to be returned if filepath is not set
+            return null ;
+#pragma warning restore CS8603 // Possible null reference return.
         }
         else
         {

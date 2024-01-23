@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,9 +9,12 @@ namespace Logger.Tests;
 public class LogFactoryTests
 {
     [TestMethod]
-    public void LogToString_ExpectedOutput(LogLevel logLevel, string message, string className)
+    public void Test_ConfigureFileLogger_Good_Value(String filePath)
     {
-        
+        LogFactory factory = new LogFactory();
+        factory.ConfigureFileLogger(filePath);
+        factory.CreateLogger(nameof(Test_ConfigureFileLogger_Good_Value));
+        Assert.IsNotNull(factory);
     }
     
 
