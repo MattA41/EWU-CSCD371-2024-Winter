@@ -21,8 +21,8 @@ public class LogFactoryTests
     {
         LogFactory factory = new LogFactory(); 
         factory.ConfigureFileLogger(null);
-        factory.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath));
-        Assert.IsNull(factory);
+        ;
+        Assert.IsNull(factory.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath)));
     }
     
 
