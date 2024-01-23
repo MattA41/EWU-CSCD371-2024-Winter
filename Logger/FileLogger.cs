@@ -7,9 +7,9 @@ namespace Logger
 {
     public class FileLogger : BaseLogger
     {
-        public LogLevel logLevel;
-        public string message = "No message given ";
-        public string className = "No class name given";
+        private LogLevel logLevel;
+        private string message = "No message given ";
+        private string className = "No class name given";
         public string filePath = "No file path given";
 
         public  FileLogger(string filepath)
