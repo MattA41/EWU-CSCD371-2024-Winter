@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,16 +13,16 @@ public class LogFactoryTests
     {
         LogFactory factory = new LogFactory();
         factory.ConfigureFileLogger("C:");
-        factory.CreateLogger(nameof(Test_ConfigureFileLogger_Good_Value));
-        Assert.IsNotNull(factory);
+        BaseLogger? log = factory.CreateLogger(nameof(Test_ConfigureFileLogger_Good_Value));
+        Assert.IsNotNull(log);
     }
     [TestMethod]
     public void Test_CreateLogger_WithNullFilepath()
     {
         LogFactory factory = new LogFactory(); 
         factory.ConfigureFileLogger(null);
-        ;
-        Assert.IsNull(factory.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath)));
+        BaseLogger? log = factory.CreateLogger(nameof(Test_CreateLogger_WithNullFilepath));
+        Assert.IsNull(log);
     }
     
 
