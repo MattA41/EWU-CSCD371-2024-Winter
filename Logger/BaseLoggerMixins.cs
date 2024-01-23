@@ -4,7 +4,7 @@ namespace Logger;
 
 public static class BaseLoggerMixins
 {
-    public static void Error(BaseLogger logger, string message, params object[] arguments)
+    public static void Error(BaseLogger? logger, string message, params object[] arguments)
     {
         if(logger == null)
         {
@@ -19,7 +19,7 @@ public static class BaseLoggerMixins
             logger.Log(LogLevel.Error, message + string.Join("", arguments));
         }
     }
-    public static void Warning(BaseLogger logger, string message, params object[] arguments)
+    public static void Warning(BaseLogger? logger, string message, params object[] arguments)
     {
         if (logger == null)
         {
@@ -34,7 +34,7 @@ public static class BaseLoggerMixins
             logger.Log(LogLevel.Warning, message + string.Join("", arguments));
         }
     }
-    public static void Information(BaseLogger logger, string message, params object[] arguments)
+    public static void Information(BaseLogger? logger, string message, params object[] arguments)
     {
         if (logger == null)
         {
@@ -49,7 +49,7 @@ public static class BaseLoggerMixins
             logger.Log(LogLevel.Information, message + string.Join("", arguments));
         }
     }
-    public static void Debug(BaseLogger logger, string message, params object[] arguments)
+    public static void Debug(BaseLogger? logger, string message, params object[] arguments)
     {
         if (logger == null)
         {
