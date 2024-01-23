@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -28,7 +29,7 @@ namespace Logger
 
         public static string LogToString(LogLevel logLevel, string message, string className)
         {
-            string logString = DateTime.Now.ToString("MMM dd yyyy, hh:mm:ss");
+            string logString = DateTime.Now.ToString("MMM dd yyyy, hh:mm:ss", new CultureInfo("en-US"));
             logString = logString + className + logLevel + message;
             return logString;
 
