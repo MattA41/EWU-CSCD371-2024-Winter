@@ -34,6 +34,41 @@ public class BaseLoggerMixinsTests
         Assert.AreEqual("message 42", logger.LoggedMessages[0].Message);
     }
 
+    [TestMethod]
+    public void Warning_WithData_LogsMessage()
+    {
+        var logger = new TestLogger();
+
+        logger.Warning("message 42");
+
+        Assert.AreEqual(1, logger.LoggedMessages.Count);
+        Assert.AreEqual(LogLevel.Warning, logger.LoggedMessages[0].LogLevel);
+        Assert.AreEqual("message 42", logger.LoggedMessages[0].Message);
+    }
+
+    [TestMethod]
+    public void Information_WithData_LogsMessage()
+    {
+        var logger = new TestLogger();
+
+        logger.Information("message 42");
+
+        Assert.AreEqual(1, logger.LoggedMessages.Count);
+        Assert.AreEqual(LogLevel.Information, logger.LoggedMessages[0].LogLevel);
+        Assert.AreEqual("message 42", logger.LoggedMessages[0].Message);
+    }
+
+    [TestMethod]
+    public void Debug_WithData_LogsMessage()
+    {
+        var logger = new TestLogger();
+
+        logger.Debug("message 42");
+
+        Assert.AreEqual(1, logger.LoggedMessages.Count);
+        Assert.AreEqual(LogLevel.Debug, logger.LoggedMessages[0].LogLevel);
+        Assert.AreEqual("message 42", logger.LoggedMessages[0].Message);
+    }
 }
 
 public class TestLogger : BaseLogger 
