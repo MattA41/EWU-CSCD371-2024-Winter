@@ -9,20 +9,20 @@ namespace Logger
     public class FileLogger(string filepath) : BaseLogger
     {
         public LogLevel LogLevel;
-        public string Message = "No message given ";
-        public string ClassName1 = "No class name given";
-        public string FilePath = filepath;
+        private string _message?;
+        private string _className1 = "No class name given";
+        public string filePath = filepath;
 
         public override string ClassName
         {
-            get { return ClassName1; }
-            set { ClassName1 = value; }
+            get { return _className1; }
+            set { _className1 = value; }
         }
 
         public override void Log(LogLevel logLevel, string message)
         {
             this.LogLevel = logLevel;
-            this.Message = message;
+            this._message = message;
             File.AppendText(LogToString(logLevel, message, ClassName));
 
         }
