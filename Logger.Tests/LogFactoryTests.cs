@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Runtime.CompilerServices;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logger.Tests;
 
@@ -6,10 +8,10 @@ namespace Logger.Tests;
 public class LogFactoryTests
 {
     [TestMethod]
-
     public void LogToString_ExpectedOutput(LogLevel logLevel, string message, string className)
     {
         
     }
+    
 
 }
