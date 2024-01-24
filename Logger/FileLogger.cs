@@ -8,10 +8,10 @@ namespace Logger
 {
     public class FileLogger(string filepath) : BaseLogger
     {
-        public LogLevel LogLevel;
-        protected string _message = "No message given";
+        private LogLevel _logLevel;
+        private string _message = "No message given";
         private string _className1 = "No class name given";
-        public string _filePath = filepath;
+        private string _filePath = filepath;
 
         public override string ClassName
         {
@@ -19,9 +19,13 @@ namespace Logger
             set { _className1 = value; }
         }
 
+        public string FilePath { get => _filePath; set => _filePath = value; }
+        public string Message { get => _message; set => _message = value; }
+        public LogLevel LogLevel1 { get => _logLevel; set => _logLevel = value; }
+
         public override void Log(LogLevel logLevel, string message)
         {
-            this.LogLevel = logLevel;
+            this._logLevel = logLevel;
             this._message = message;
             File.AppendText(LogToString(logLevel, message, ClassName));
 

@@ -13,7 +13,7 @@ public class FileLoggerTests
     public void FileLogger_EmptyFilePath()
     {
         FileLogger fileLogger = new("");
-        Assert.IsFalse(fileLogger._filePath == null);
+        Assert.IsFalse(fileLogger.FilePath == null);
 
     }
     
