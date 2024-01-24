@@ -11,7 +11,7 @@ public class PersonTests
     [Fact]
     public void Constructor_ValidName_SuccessfulInitialization()
     {
-        Person person = new();
+        Person person = new("Inigo");
 
 
     }
@@ -47,6 +47,13 @@ public class PersonTests
             );
     }
 
-
-
+    [Fact]
+    public void MiddleName_SetInigo_Success()
+    {
+        Person person = new("Inigo")
+        {
+            MiddleName = "Middle"
+        };
+        Assert.Equal("Middle", person.MiddleName);
+    }
 }
