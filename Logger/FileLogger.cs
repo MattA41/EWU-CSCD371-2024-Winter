@@ -11,7 +11,7 @@ namespace Logger
         public LogLevel LogLevel;
         protected string _message = "No message given";
         private string _className1 = "No class name given";
-        public string filePath = filepath;
+        public string _filePath = filepath;
 
         public override string ClassName
         {
