@@ -4,8 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace Logger
-{
+namespace Logger;
     public class FileLogger(string filepath) : BaseLogger
     {
         private LogLevel _logLevel;
@@ -39,4 +38,4 @@ namespace Logger
 
         }
     }
-}
+
