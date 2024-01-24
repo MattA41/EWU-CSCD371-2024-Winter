@@ -75,11 +75,11 @@ public class TestLogger : BaseLogger
 {
     public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
 
-    public string ClassName1 = "";
+    private string _className1 = "";
     public override string ClassName
     {
-        get { return ClassName1; }
-        set {  ClassName1 = value; }
+        get { return _className1; }
+        set {  _className1 = value; }
     }
     public override void Log(LogLevel logLevel, string message)
     {
