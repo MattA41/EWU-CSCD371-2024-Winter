@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 
 namespace Logger;
-    public class FileLogger(string filepath) : BaseLogger
+    public class FileLogger(string filePath) : BaseLogger
     {
         private LogLevel _logLevel;
         private string _message = "No message given";
@@ -33,7 +33,7 @@ namespace Logger;
         public static string LogToString(LogLevel logLevel, string message, string className)
         {
             string logString = DateTime.Now.ToString("MMM dd yyyy, hh:mm:ss", new CultureInfo("en-US"));
-            logString = logString + className + logLevel + message;
+            logString += className + logLevel + message;
             return logString;
 
         }
