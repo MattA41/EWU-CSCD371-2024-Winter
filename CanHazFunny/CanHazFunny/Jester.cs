@@ -8,9 +8,14 @@ namespace CanHazFunny
 {   
     interface IOutPutJoke
     {
-        public String Print(String Joke);
+        public void Print(String Joke);
     }
     internal class Jester
     {
+        public static void Print(String Joke) 
+        {
+            ArgumentNullException.ThrowIfNull(Joke);
+            Console.WriteLine(Joke);
+        }
     }
 }
