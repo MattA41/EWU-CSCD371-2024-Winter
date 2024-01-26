@@ -21,7 +21,7 @@ namespace CanHazFunny
         {
             JokeService jokeGenerator = new();
             string joke = jokeGenerator.GetJoke();
-            while(joke.ToLower().Equals("Chuck Norris".ToLower()))
+            while(joke.ToLower().Contains("Chuck Norris".ToLower()))
             {
                 joke = jokeGenerator.GetJoke();
             }
