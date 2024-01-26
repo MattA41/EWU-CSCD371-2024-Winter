@@ -10,6 +10,12 @@ public class JesterTests
         string joke = Jester.TellJoke();
         Assert.DoesNotContain("Chuck Norris".ToLower(), joke.ToLower());
     }
+    [Fact]
+    public void TellJoke_CheckNotNull()
+    {
+        string joke = Jester.TellJoke();
+        Assert.NotNull(joke);
+    }
 
 
 }
