@@ -17,9 +17,9 @@ namespace CanHazFunny
             ArgumentNullException.ThrowIfNull(Joke);
             Console.WriteLine(Joke);
         }
-        public string TellJoke()
+        public static string TellJoke()
         {
-            JokeService jokeGenerator = new JokeService();
+            JokeService jokeGenerator = new();
             string joke = jokeGenerator.GetJoke();
             while(joke.ToLower().Equals("Chuck Norris".ToLower()))
             {
