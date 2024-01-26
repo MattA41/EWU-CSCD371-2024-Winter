@@ -23,11 +23,11 @@ namespace CanHazFunny
         {
             JokeService jokeGenerator = new();
             string joke = jokeGenerator.GetJoke();
-            int Count = 0;
+           // int Count = 0;
             while(joke.ToLower().Contains("Chuck Norris".ToLower()))
             {
                 joke = jokeGenerator.GetJoke();
-               Count++;
+              // Count++;
             }
             //Console.WriteLine(Count);
             return joke;
