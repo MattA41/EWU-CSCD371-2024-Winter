@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CanHazFunny.Tests
-{
+namespace CanHazFunny.Tests;
+
     public  class JokeServiceTests
     {
         [Fact]
@@ -17,4 +17,4 @@ namespace CanHazFunny.Tests
             Assert.NotNull(joke);
         }
     }
-}
+
