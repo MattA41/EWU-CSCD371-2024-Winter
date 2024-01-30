@@ -25,5 +25,5 @@ namespace CanHazFunny.Tests;
                 Assert.Equal("Test Joke", printedOutput);
             }
         }
-    }
+    
 
