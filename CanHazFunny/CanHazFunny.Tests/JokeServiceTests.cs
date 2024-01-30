@@ -12,7 +12,7 @@ namespace CanHazFunny.Tests
         [Fact]
         public void TestJokeService()
         {
-            JokeService jokeService = new JokeService();
+            JokeService jokeService = new();
             string joke = jokeService.GetJoke();
             Assert.NotNull(joke);
         }
