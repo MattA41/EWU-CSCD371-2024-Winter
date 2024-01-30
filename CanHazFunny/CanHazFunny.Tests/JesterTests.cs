@@ -1,4 +1,7 @@
+using System;
+using Newtonsoft.Json.Bson;
 using Xunit;
+using Xunit.Sdk;
 
 namespace CanHazFunny.Tests;
 
@@ -16,6 +19,10 @@ public class JesterTests
         string joke = Jester.TellJoke();
         Assert.NotNull(joke);
     }
-
+    [Fact]
+    public void Joke_TestPrint()
+    {
+        Assert.Throws<ArgumentNullException>(() => Jester.Print(null));
+    }
 
 }
