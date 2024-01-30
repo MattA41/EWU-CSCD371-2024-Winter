@@ -9,7 +9,7 @@ namespace CanHazFunny.Tests;
 public class JesterTests
 {
     [Fact]
-    public void TellJoke_Not_Norris()
+    public void Test_TellJoke_Not_Norris()
     {
         var jokeServiceMock = new Mock<IJokeServiceInterface>();
         jokeServiceMock.Setup(j => j.GetJoke()).Returns("A regular joke");
@@ -25,7 +25,7 @@ public class JesterTests
         Assert.Equal("A regular joke", joke);
     }
     [Fact]
-    public void TellJoke_CheckNotNull()
+    public void Test_TellJoke_CheckNotNull()
     {
         var jokeServiceMock = new Mock<IJokeServiceInterface>();
         jokeServiceMock.Setup(j => j.GetJoke()).Returns("A regular joke");
@@ -37,7 +37,7 @@ public class JesterTests
         Assert.NotNull(joke);
     }
     [Fact]
-    public void JokePrint_NullInput()
+    public void Test_JesterPrint_NullInput()
     {
         var jokeServiceMock = new Mock<IJokeServiceInterface>();
         jokeServiceMock.Setup(j => j.GetJoke()).Returns("A regular joke");
@@ -50,7 +50,7 @@ public class JesterTests
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
     [Fact]
-    public void Test_JokePrint_ValidInput()
+    public void Test_JesterPrint_GoodInput()
     {
         var jokeServiceMock = new Mock<IJokeServiceInterface>();
         jokeServiceMock.Setup(j => j.GetJoke()).Returns("A regular joke");

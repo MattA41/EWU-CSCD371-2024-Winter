@@ -23,9 +23,9 @@ namespace CanHazFunny;
 
     public Boolean Print(String Joke) 
         {
-            ArgumentNullException.ThrowIfNull(Joke);
-            Console.WriteLine(Joke);
-            return true;
+            ArgumentNullException.ThrowIfNull(joke);
+            Console.WriteLine(joke);
+            //return true;
         }
     public string TellJoke()
     {
