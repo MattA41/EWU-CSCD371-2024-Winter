@@ -13,10 +13,11 @@ namespace CanHazFunny;
     public class Jester
     {
         //int Count;
-        public static void Print(String Joke) 
+        public static Boolean Print(String Joke) 
         {
             ArgumentNullException.ThrowIfNull(Joke);
             Console.WriteLine(Joke);
+            return true;
         }
         public static string TellJoke()
         {
