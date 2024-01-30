@@ -22,7 +22,9 @@ public class JesterTests
     [Fact]
     public void Joke_TestPrint()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type. Disabled to test the method works as intended when a null opject is passed in
         Assert.Throws<ArgumentNullException>(() => Jester.Print(null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
 }
