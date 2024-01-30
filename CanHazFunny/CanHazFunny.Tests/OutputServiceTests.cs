@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CanHazFunny.Tests
-{
+namespace CanHazFunny.Tests;
     public class OutputServiceTests
     {
         [Fact]
@@ -19,13 +18,13 @@ namespace CanHazFunny.Tests
             {
                 Console.SetOut(sw);
 
-                // Act
+
                 outputService.Print("Test Joke");
 
-                // Assert
-                string printedOutput = sw.ToString().Trim(); // Trim to remove leading/trailing whitespaces
+                
+                string printedOutput = sw.ToString().Trim(); 
                 Assert.Equal("Test Joke", printedOutput);
             }
         }
     }
-}
+
