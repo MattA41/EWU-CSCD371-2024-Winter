@@ -6,30 +6,37 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace CanHazFunny; 
-    internal interface IOutPutJoke
+    public interface IOutPutJoke
     {
         public void Print(String Joke);
     }
     public class Jester
     {
-        //int Count;
-        public static Boolean Print(String Joke) 
+    private readonly IJokeServiceInterface jokeService;
+    private readonly IOutPutJoke output;
+
+    public Jester(IJokeServiceInterface jokeService, IOutPutJoke output)
+    {
+        this.jokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
+        this.output = output ?? throw new ArgumentNullException(nameof(output));
+    }
+
+    public Boolean Print(String Joke) 
         {
             ArgumentNullException.ThrowIfNull(Joke);
             Console.WriteLine(Joke);
             return true;
         }
-        public static string TellJoke()
+    public string TellJoke()
+    {
+        string joke = jokeService.GetJoke();
+
+        while (joke.Contains("Chuck Norris", StringComparison.InvariantCulture))
         {
-            JokeService jokeGenerator = new();
-            string joke = jokeGenerator.GetJoke();
-           // int Count = 0;
-            while(joke.Contains("Chuck Norris", StringComparison.InvariantCulture))
-            {
-                joke = jokeGenerator.GetJoke();
-              // Count++;
-            }
-            //Console.WriteLine(Count);
-            return joke;
+            joke = jokeService.GetJoke();
         }
+
+        output.Print(joke);
+        return joke;
     }
+}
