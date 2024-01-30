@@ -45,9 +45,9 @@ public class JesterTests
         var outputJokeMock = new Mock<IOutPutJoke>();
 
         var jester = new Jester(jokeServiceMock.Object, outputJokeMock.Object);
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type. Disabled to test the method works as intended when a null opject is passed in
-        Assert.Throws<ArgumentNullException>(() => jester.Print(null));
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+
+        Assert.Throws<ArgumentNullException>(() => jester.Print(null!));
+
     }
     [Fact]
     public void Test_JokePrint_ValidInput()
