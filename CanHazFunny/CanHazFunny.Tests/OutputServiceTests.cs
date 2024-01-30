@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,9 +14,8 @@ namespace CanHazFunny.Tests;
         {
             OutputService outputService = new();
 
-            using (var sw = new StringWriter())
-            {
-                Console.SetOut(sw);
+            using var sw = new StringWriter();
+            Console.SetOut(sw);
 
 
                 outputService.Print("Test Joke");
