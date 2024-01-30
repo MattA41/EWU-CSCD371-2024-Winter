@@ -25,6 +25,27 @@ public class JesterTests
         Assert.Equal("A regular joke", joke);
     }
     [Fact]
+    public void Test_TellJoke_JokeContainsChuckNorris_GetsNewJoke()
+    {
+        // Arrange
+        var jokeServiceMock = new Mock<IJokeServiceInterface>();
+        jokeServiceMock.SetupSequence(j => j.GetJoke())
+            .Returns("Chuck Norris joke")
+            .Returns("Another Chuck Norris joke")
+            .Returns("A regular joke");
+
+        var outputMock = new Mock<IOutPutJoke>();
+
+        var jester = new Jester(jokeServiceMock.Object, outputMock.Object);
+
+        // Act
+        string result = jester.TellJoke();
+
+        // Assert
+        outputMock.Verify(o => o.Print("A regular joke"), Times.Once);
+        Assert.Equal("A regular joke", result);
+    }
+    [Fact]
     public void Test_TellJoke_CheckNotNull()
     {
         var jokeServiceMock = new Mock<IJokeServiceInterface>();
