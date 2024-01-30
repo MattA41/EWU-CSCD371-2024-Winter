@@ -15,12 +15,6 @@ namespace CanHazFunny;
     private readonly IJokeServiceInterface jokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
     private readonly IOutPutJoke output = output ?? throw new ArgumentNullException(nameof(output));
 
-    public static Boolean Print(String Joke) 
-        {
-            ArgumentNullException.ThrowIfNull(Joke);
-            Console.WriteLine(Joke);
-            return true;
-        }
     public string TellJoke()
     {
         string joke = jokeService.GetJoke();

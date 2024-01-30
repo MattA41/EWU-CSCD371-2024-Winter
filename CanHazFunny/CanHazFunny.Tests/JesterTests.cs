@@ -36,28 +36,5 @@ public class JesterTests
         string joke = jester.TellJoke();
         Assert.NotNull(joke);
     }
-    [Fact]
-    public void Test_JesterPrint_NullInput()
-    {
-        var jokeServiceMock = new Mock<IJokeServiceInterface>();
-        jokeServiceMock.Setup(j => j.GetJoke()).Returns("A regular joke");
-
-        var outputJokeMock = new Mock<IOutPutJoke>();
-
-        var jester = new Jester(jokeServiceMock.Object, outputJokeMock.Object);
-
-        Assert.Throws<ArgumentNullException>(() => Jester.Print(null!));
-
-    }
-    [Fact]
-    public void Test_JesterPrint_GoodInput()
-    {
-        var jokeServiceMock = new Mock<IJokeServiceInterface>();
-        jokeServiceMock.Setup(j => j.GetJoke()).Returns("A regular joke");
-
-        var outputJokeMock = new Mock<IOutPutJoke>();
-
-        var jester = new Jester(jokeServiceMock.Object, outputJokeMock.Object);
-        Assert.True(Jester.Print("this is a joke"));
-    }
+    
 }
