@@ -8,7 +8,7 @@ public class JesterTests
     public void TellJoke_Not_Norris()
     {
         string joke = Jester.TellJoke();
-        Assert.DoesNotContain("Chuck Norris".ToLower(), joke.ToLower());
+        Assert.DoesNotContain("Chuck Norris".ToLowerInvariant(), joke.ToLowerInvariant());
     }
     [Fact]
     public void TellJoke_CheckNotNull()

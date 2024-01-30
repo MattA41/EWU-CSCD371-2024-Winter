@@ -23,7 +23,7 @@ namespace CanHazFunny;
             JokeService jokeGenerator = new();
             string joke = jokeGenerator.GetJoke();
            // int Count = 0;
-            while(joke.ToLower().Contains("Chuck Norris".ToLower()))
+            while(joke.ToLowerInvariant().Contains("Chuck Norris".ToLowerInvariant()))
             {
                 joke = jokeGenerator.GetJoke();
               // Count++;
