@@ -47,7 +47,7 @@ public class JesterTests
         Assert.Throws<ArgumentNullException>(() => new Jester(null!, Mock.Of<IOutPutJoke>()));
     }
     [Fact]
-    public void Test_BothNull_ThrowsExcpetion()
+    public void Test_BothNull_ThrowsException()
     {
         Assert.Throws<ArgumentNullException>(() => new Jester(null!,null!));
     }

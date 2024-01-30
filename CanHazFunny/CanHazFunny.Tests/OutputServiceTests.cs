@@ -23,7 +23,7 @@ namespace CanHazFunny.Tests;
                 
                 string printedOutput = sw.ToString().Trim(); 
                 Assert.Equal("Test Joke", printedOutput);
-            }
+            
         }
-    
+    }
 
