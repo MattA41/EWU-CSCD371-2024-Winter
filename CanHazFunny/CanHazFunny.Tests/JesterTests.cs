@@ -46,7 +46,7 @@ public class JesterTests
 
         var jester = new Jester(jokeServiceMock.Object, outputJokeMock.Object);
 
-        Assert.Throws<ArgumentNullException>(() => jester.Print(null!));
+        Assert.Throws<ArgumentNullException>(() => Jester.Print(null!));
 
     }
     [Fact]
@@ -58,6 +58,6 @@ public class JesterTests
         var outputJokeMock = new Mock<IOutPutJoke>();
 
         var jester = new Jester(jokeServiceMock.Object, outputJokeMock.Object);
-        Assert.True(jester.Print("this is a joke"));
+        Assert.True(Jester.Print("this is a joke"));
     }
 }

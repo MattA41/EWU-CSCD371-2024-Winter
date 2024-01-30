@@ -10,22 +10,16 @@ namespace CanHazFunny;
     {
         public void Print(String Joke);
     }
-    public class Jester
-    {
-    private readonly IJokeServiceInterface jokeService;
-    private readonly IOutPutJoke output;
+    public class Jester(IJokeServiceInterface jokeService, IOutPutJoke output)
+{
+    private readonly IJokeServiceInterface jokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
+    private readonly IOutPutJoke output = output ?? throw new ArgumentNullException(nameof(output));
 
-    public Jester(IJokeServiceInterface jokeService, IOutPutJoke output)
-    {
-        this.jokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
-        this.output = output ?? throw new ArgumentNullException(nameof(output));
-    }
-
-    public Boolean Print(String Joke) 
+    public static Boolean Print(String Joke) 
         {
-            ArgumentNullException.ThrowIfNull(joke);
-            Console.WriteLine(joke);
-            //return true;
+            ArgumentNullException.ThrowIfNull(Joke);
+            Console.WriteLine(Joke);
+            return true;
         }
     public string TellJoke()
     {
