@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CanHazFunny
 {
-    internal class OutputService : IOutPutJoke
+    public class OutputService : IOutPutJoke
     {
         public void Print(string Joke)
         {
