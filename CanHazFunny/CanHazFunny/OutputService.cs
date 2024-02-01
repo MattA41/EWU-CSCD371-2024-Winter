@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CanHazFunny;
 
-    public class OutputService : IOutPutJoke
+public class OutputService : IOutPutJoke
+{
+    public void Print(string Joke)
     {
-        public void Print(string Joke)
-        {
-            Console.WriteLine(Joke);
+        Console.WriteLine(Joke);
 
-        }
     }
+}
 

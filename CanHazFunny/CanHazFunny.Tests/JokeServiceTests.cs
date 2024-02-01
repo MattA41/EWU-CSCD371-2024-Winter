@@ -7,14 +7,14 @@ using Xunit;
 
 namespace CanHazFunny.Tests;
 
-    public  class JokeServiceTests
+public class JokeServiceTests
+{
+    [Fact]
+    public void TestJokeService()
     {
-        [Fact]
-        public void TestJokeService()
-        {
-            JokeService jokeService = new();
-            string joke = jokeService.GetJoke();
-            Assert.NotNull(joke);
-        }
+        JokeService jokeService = new();
+        string joke = jokeService.GetJoke();
+        Assert.NotNull(joke);
     }
+}
 

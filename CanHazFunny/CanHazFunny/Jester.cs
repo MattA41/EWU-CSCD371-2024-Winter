@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CanHazFunny; 
-    
-    public class Jester(IJokeServiceInterface jokeService, IOutPutJoke output)
+namespace CanHazFunny;
+
+public class Jester(IJokeServiceInterface jokeService, IOutPutJoke output)
 {
     private readonly IJokeServiceInterface jokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
     private readonly IOutPutJoke output = output ?? throw new ArgumentNullException(nameof(output));

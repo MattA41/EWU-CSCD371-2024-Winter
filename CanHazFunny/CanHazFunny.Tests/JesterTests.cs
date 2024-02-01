@@ -70,7 +70,7 @@ public class JesterTests
     [Fact]
     public void Test_BothNull_ThrowsException()
     {
-        Assert.Throws<ArgumentNullException>(() => new Jester(null!,null!));
+        Assert.Throws<ArgumentNullException>(() => new Jester(null!, null!));
     }
     [Fact]
     public void Test_ValidInput()

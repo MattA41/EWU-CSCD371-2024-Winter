@@ -6,10 +6,10 @@ public class Program
 {
     public static void Main()
     {
-       OutputService outputService = new();
+        OutputService outputService = new();
         JokeService jokeService = new();
         Jester jest = new(jokeService, outputService);
         jest.TellJoke();
-        
+
     }
 }

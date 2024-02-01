@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace CanHazFunny.Tests;
-    public class OutputServiceTests
+public class OutputServiceTests
+{
+    [Fact]
+    public void TestPrintMethod()
     {
-        [Fact]
-        public void TestPrintMethod()
-        {
-            OutputService outputService = new();
+        OutputService outputService = new();
 
-            using var sw = new StringWriter();
-            Console.SetOut(sw);
+        using var sw = new StringWriter();
+        Console.SetOut(sw);
 
 
-                outputService.Print("Test Joke");
+        outputService.Print("Test Joke");
 
-                
-                string printedOutput = sw.ToString().Trim(); 
-                Assert.Equal("Test Joke", printedOutput);
-            
-        }
+
+        string printedOutput = sw.ToString().Trim();
+        Assert.Equal("Test Joke", printedOutput);
+
     }
+}
 

@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CanHazFunny;
-    public interface IJokeServiceInterface
-    {
-        public string GetJoke();
-    }
-
+public interface IJokeServiceInterface
+{
+    public string GetJoke();
+}
