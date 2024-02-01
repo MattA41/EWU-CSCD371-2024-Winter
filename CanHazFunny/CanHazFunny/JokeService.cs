@@ -8,7 +8,8 @@ public class JokeService : IJokeServiceInterface
 
     public string GetJoke()
     {
-        string joke = HttpClient.GetStringAsync("https://geek-jokes.sameerkumar.website/api").Result;
+        HttpResponseMessage json = HttpClient.GetAsync("https://geek-jokes.sameerkumar.website/api").Result;
+        string joke = json.Content.ReadAsStringAsync().Result;
         return joke;
     }
 }
