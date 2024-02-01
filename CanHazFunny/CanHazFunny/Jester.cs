@@ -6,10 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace CanHazFunny; 
-    public interface IOutPutJoke
-    {
-        public void Print(String Joke);
-    }
+    
     public class Jester(IJokeServiceInterface jokeService, IOutPutJoke output)
 {
     private readonly IJokeServiceInterface jokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
