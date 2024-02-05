@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace Logger;
+public record Book(Guid Id, string Title, string Author) : IEntity
 {
-    internal class Book
-    {
-    }
+    
+    public string Name => $"{Title} by {Author}";
 }
