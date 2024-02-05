@@ -8,7 +8,7 @@ namespace Logger
 {
     public abstract record class BaseEntity
     {
-        public abstract Guid Id { get; init; }
+        public Guid Id { get; init; } = new Guid();
         public abstract string Name { get; }
     }
 }
