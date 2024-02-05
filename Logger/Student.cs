@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logger;
-public record Student(Guid Id, string FirstName, string LastName) : IEntity
+public record Student(Guid Id, string FirstName, string LastName) : BaseEntity
 {
-    public string Name => $"{FirstName} {LastName}";
+    public override string Name => $"{FirstName} {LastName}";
+
 }
