@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Logger
 {
-    public abstract class BaseEntity : IEntity
+    public abstract record BaseEntity : IEntity
     {
         public Guid Id { get; init; }
 
-        string IEntity.Name => throw new NotImplementedException();
-
+        public string Name => "Default Name";
 
     }
 }

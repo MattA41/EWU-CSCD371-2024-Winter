@@ -8,5 +8,5 @@ namespace Logger;
 public record Book(Guid Id, string Title, string Author) : IEntity
 {
     
-    public string Name => $"{Title} by {Author}";
+    public string Name =>  $"{Title} by {Author}";
 }

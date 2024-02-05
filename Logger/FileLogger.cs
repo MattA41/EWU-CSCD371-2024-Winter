@@ -1,12 +1,10 @@
 ﻿namespace Logger;
 
-public class FileLogger : BaseLogger, ILogger
+public class FileLogger(string logSource, string filePath) : BaseLogger(logSource), ILogger
 {
-    private FileInfo File { get; }
+    private FileInfo File { get; } = new FileInfo(filePath);
 
     public string FilePath { get => File.FullName; }
-
-    public FileLogger(string logSource, string filePath) : base(logSource) => File = new FileInfo(filePath);
 
     public FileLogger(FileLoggerConfiguration configuration) : this(configuration.LogSource, configuration.FilePath) {}
 
