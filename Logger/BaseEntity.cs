@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 namespace Logger
 {
-    public abstract record BaseEntity : IEntity
+    public abstract record class BaseEntity : IEntity
     {
         public Guid Id { get; init; }
 
-        public string Name => "Default Name";
+        //Implemented explicitly to avoid naming contradictions
+        string IEntity.Name
+        {
+            get
+            {
+                return GetName();
+            }
 
+            set
+            {
+                SetName(value);
+            }
+        }
+
+        protected abstract string GetName();
+        protected abstract void SetName(string name);
     }
 }
