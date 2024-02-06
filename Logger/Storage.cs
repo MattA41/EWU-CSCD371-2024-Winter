@@ -1,5 +1,6 @@
 ﻿namespace Logger;
-public class Storage;
+public class Storage
+{
     private HashSet<IEntity> Entities { get; } = new();
     
     public void Add(IEntity item)
@@ -25,4 +26,4 @@ public class Storage;
             return dynamicEntity.Id == expectedGuid;
         });
     }
-
+}
