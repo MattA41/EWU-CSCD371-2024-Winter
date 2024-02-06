@@ -15,10 +15,9 @@ namespace Logger.Tests;
         Storage storage = new();
         Student student = new(new FullName("First", "Last"));
 
-        // Act
+
         storage.Add((IEntity)student);
 
-        // Assert
         Assert.True(storage.Contains((IEntity)student));
     }
 }
