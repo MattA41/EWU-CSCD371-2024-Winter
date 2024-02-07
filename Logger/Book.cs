@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Logger;
 public record Book(string Title, Guid Id)  : BaseEntity
 {
+    //I used implicity immplementation here
     public override string Name { get; } = Title;
     private readonly Guid id = Id;
 

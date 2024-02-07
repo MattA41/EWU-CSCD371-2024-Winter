@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Logger;
 public record class Person(FullName FullName, Guid NewId) : BaseEntity
 {
-
+    //I used implicity immplementation here
     public override string Name { get => FullName.Name; }
 
 }

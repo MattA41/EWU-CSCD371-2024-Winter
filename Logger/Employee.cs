@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Logger;
 public record Employee : Person
 {
-
+    //I used implicity immplementation here
     public Employee(FullName name, Guid id) : base(name, id) { }
 }
