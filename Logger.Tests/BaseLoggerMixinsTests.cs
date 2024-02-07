@@ -27,5 +27,59 @@ public class BaseLoggerMixinsTests
         Assert.Equal(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
         Assert.Equal("Message 42", logger.LoggedMessages[0].Message);
     }
+    [Fact]
+    public void Warning_WithNullLogger_ThrowExeption()
+    {
+        Assert.Throws<ArgumentNullException>(() =>
+            BaseLoggerMixins.Warning(null!, ""));
+    }
 
+    [Fact]
+    public void Warning_WithData_LogsMessage()
+    {
+        var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
+
+        logger.Warning("Message 42");
+
+        Assert.Single(logger.LoggedMessages);
+        Assert.Equal(LogLevel.Warning, logger.LoggedMessages[0].LogLevel);
+        Assert.Equal("Message 42", logger.LoggedMessages[0].Message);
+    }
+
+    [Fact]
+    public void Information_WithNullLogger_ThrowsException()
+    {
+        Assert.Throws<ArgumentNullException>(() =>
+            BaseLoggerMixins.Information(null!, ""));
+    }
+
+    [Fact]
+    public void Information_WithData_LogsMessage()
+    {
+        var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
+
+        logger.Information("Message 42");
+
+        Assert.Single(logger.LoggedMessages);
+        Assert.Equal(LogLevel.Information, logger.LoggedMessages[0].LogLevel);
+        Assert.Equal("Message 42", logger.LoggedMessages[0].Message);
+    }
+
+    [Fact]
+    public void Debug_WithNullLogger_ThrowsException()
+    {
+        Assert.Throws<ArgumentNullException>(() =>
+            BaseLoggerMixins.Debug(null!, ""));
+    }
+    [Fact]
+    public void Debug_WithData_LogsMessage()
+    {
+        var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
+
+        logger.Debug("Message 42");
+
+        Assert.Single(logger.LoggedMessages);
+        Assert.Equal(LogLevel.Debug, logger.LoggedMessages[0].LogLevel);
+        Assert.Equal("Message 42", logger.LoggedMessages[0].Message);
+    }
 }
