@@ -9,6 +9,6 @@ namespace Logger;
 public record Book(string Title, Guid Id)  : BaseEntity
 {
     public override string Name { get; } = Title;
-    public Guid guid = Id;
+    protected Guid id = Id;
 
 }
