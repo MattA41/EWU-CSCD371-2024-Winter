@@ -17,7 +17,7 @@ public class EntityTests
         FullName testName = new("Cotton", "Joe", "Eye");
 
 
-        Student student = new(testName);
+        Student student = new(testName, new Guid());
 
 
         Assert.Equal(nameTest, student.Name);
@@ -30,7 +30,7 @@ public class EntityTests
         FullName testName = new("Cotton", "Joe", "Eye");
 
 
-        Student employee = new(testName);
+        Student employee = new(testName, new Guid());
 
         Assert.Equal(nameTest, employee.Name);
 
@@ -39,8 +39,9 @@ public class EntityTests
     public void Book_NameMatches()
     {
         string titleTest = "Count your lucky stars";
-        Book book = new(titleTest);
+        Book book = new(titleTest, new Guid());
 
         Assert.Equal(titleTest, book.Title);
     }
+
 }

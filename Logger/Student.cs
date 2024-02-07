@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Logger;
 public record Student : Person
 {
-    public Student(FullName name) : base(name) { }
+    public Student(FullName name, Guid id) : base(name, id) { }
 
 }

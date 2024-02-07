@@ -8,5 +8,5 @@ namespace Logger;
 public record Employee : Person
 {
 
-    public Employee(FullName name) : base(name) { }
+    public Employee(FullName name, Guid id) : base(name, id) { }
 }

@@ -13,7 +13,7 @@ namespace Logger.Tests;
     public void AddStudent_StudentAdded()
     {
         Storage storage = new();
-        Student student = new(new FullName("First", "Last"));
+        Student student = new(new FullName("First", "Last"), new Guid());
 
 
         storage.Add(student);
@@ -25,7 +25,7 @@ namespace Logger.Tests;
     public void AddBook_BookAdded()
     {
         Storage storage = new();
-        Book book = new("Book Title");
+        Book book = new("Book Title", new Guid());
 
 
         storage.Add(book);
@@ -37,7 +37,7 @@ namespace Logger.Tests;
     public void AddEmployee_EmployeeAdded()
     {
         Storage storage = new();
-        Employee employee = new(new FullName("First", "Last"));
+        Employee employee = new(new FullName("First", "Last"), new Guid());
 
 
         storage.Add(employee);
@@ -48,7 +48,7 @@ namespace Logger.Tests;
     public void RemoveEmployee_EmployeeRemoved()
     {
         Storage storage = new();
-        Employee employee = new(new FullName("First", "Last"));
+        Employee employee = new(new FullName("First", "Last"), new Guid());
 
 
         storage.Add(employee);
@@ -61,7 +61,7 @@ namespace Logger.Tests;
     public void RemoveStudent_StudentRemoved()
     {
         Storage storage = new();
-        Student student = new(new FullName("First", "Last"));
+        Student student = new(new FullName("First", "Last"), new Guid());
 
 
         storage.Add(student);
@@ -75,7 +75,7 @@ namespace Logger.Tests;
     public void RemoveBook_BookRemoved()
     {
         Storage storage = new();
-        Book book = new("Book Title");
+        Book book = new("Book Title", new Guid());
 
 
         storage.Add(book);
