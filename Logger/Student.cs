@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Logger;
 public record Student : Person
 {
-    //implicit implementation works best here 
+    //This is an implicit implementation as it gets from Person
+
     public Student(FullName name, Guid id) : base(name, id) { }
 
 }
