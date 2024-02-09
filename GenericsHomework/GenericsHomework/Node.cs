@@ -28,6 +28,13 @@ namespace GenericsHomework
         }
         public void Append(T value)
         {
+            while(this.Next != null)
+            {
+                if (this.Value.Equals(value))
+                {
+                    return;
+                }
+            }
             Node<T> newNode = new Node<T>(value);
             Next = newNode;
         }
