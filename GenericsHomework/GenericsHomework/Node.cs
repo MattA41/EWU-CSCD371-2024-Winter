@@ -26,6 +26,11 @@ namespace GenericsHomework
         {
             return Value.ToString();
         }
+        public void Append(T value)
+        {
+            Node<T> newNode = new Node<T>(value);
+            Next = newNode;
+        }
     }
 
 }
