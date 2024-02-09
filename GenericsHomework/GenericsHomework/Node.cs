@@ -38,6 +38,19 @@ namespace GenericsHomework
             //Since the other nodes are disconnected from the head node after this method executes, the remaining nodes are eligible for garbage collection
             //Since there is nothing to reference them, we do not need to worry about what happens to them. They are taken care of in garbage collection
         }
+        public bool Exists(T value) 
+        {
+           if(Next == null) return false;
+
+           if(value.Equals(Value))
+            {
+                return true;
+            }
+            else
+            {
+                return Exists(value);
+            }
+        }
     }
 
 }
