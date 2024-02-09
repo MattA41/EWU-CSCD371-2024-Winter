@@ -32,7 +32,7 @@ namespace GenericsHomework
                 {
                     return;
                 }
-            Node<T> newNode = new Node<T>(value);
+            Node<T> newNode = new(value);
             Next = newNode;
         }
         public void Clear()
