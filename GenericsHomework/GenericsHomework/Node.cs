@@ -30,7 +30,7 @@ namespace GenericsHomework
         {
             while(this.Next != null)
             {
-                if (this.Value.Equals(value))
+                if (Exists(Value))
                 {
                     return;
                 }
