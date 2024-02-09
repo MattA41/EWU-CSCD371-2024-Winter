@@ -14,7 +14,7 @@ namespace GenericsHomework
         public Node(T value)
         {
             Value = value;
-            Next = this; // Points back to itself initially
+            Next = this; 
         }
 
         public void SetNext(Node<T> next)
