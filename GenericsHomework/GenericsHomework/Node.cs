@@ -19,13 +19,14 @@ namespace GenericsHomework
 
         public void SetNext(Node<T> next)
         {
+            // I think having the check has made it so that next cannot 
             ArgumentNullException.ThrowIfNull(next);
             Next = next;
         }
 
         public override string ToString()
         {
-
+            //this to string uses the tostring method in the object type of value
             return Value?.ToString() ?? string.Empty;
         }
         public void Append(T value)
