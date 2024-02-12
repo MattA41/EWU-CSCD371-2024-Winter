@@ -56,7 +56,7 @@ namespace GenericsHomework
         }
         public bool Exists(T value)
         {
-            if (value == null) throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(value);
             Node<T> dummy = new(value)
             {
                 Next = Next
