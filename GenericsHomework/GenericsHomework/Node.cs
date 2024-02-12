@@ -14,7 +14,7 @@ namespace GenericsHomework
         public Node(T value)
         {
             Value = value;
-            Next = this; 
+            Next = this;
         }
 
         public void SetNext(Node<T> next)
@@ -24,30 +24,31 @@ namespace GenericsHomework
 
         public override string ToString()
         {
-            return Value.ToString();
+
+            return Value?.ToString() ?? string.Empty;
         }
         public void Append(T value)
         {
-                if (Exists(Value))
-                {
-                    return;
-                }
+            if (Exists(Value))
+            {
+                return;
+            }
             Node<T> newNode = new(value);
             Next = newNode;
         }
         public void Clear()
         {
-            Next = this; 
+            Next = this;
             //All we need to do to clear the list is reconnect the next to the node itself. 
             //Since the other nodes are disconnected from the head node after this method executes, the remaining nodes are eligible for garbage collection
             //Since there is nothing to reference them, we do not need to worry about what happens to them. They are taken care of in garbage collection
         }
-        public bool Exists(T value) 
+        public bool Exists(T value)
         {
-           if(value == null) throw new ArgumentNullException(nameof(value));
-           if(Next == null) return false;
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            if (Next == null) return false;
 
-           if(value.Equals(Value))
+            if (value.Equals(Value))
             {
                 return true;
             }
