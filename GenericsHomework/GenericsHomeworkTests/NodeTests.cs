@@ -55,5 +55,17 @@ namespace GenericsHomeworkTests
             node1.Append("String4");
             Assert.True(node3.Next.Value.Equals("String4"));
         }
+        [Fact]
+        public void Append_TestNullValue()
+        {
+            Node<String> node1 = new("String");
+            Node<String> node2 = new("String 2");
+            Node<String> node3 = new("String 3");
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node1.Append(null!);
+            Assert.Throws<ArgumentNullException>(() => node1.Append(null!));
+
+        }
     }
 }
