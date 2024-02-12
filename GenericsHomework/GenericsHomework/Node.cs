@@ -19,6 +19,7 @@ namespace GenericsHomework
 
         public void SetNext(Node<T> next)
         {
+            ArgumentNullException.ThrowIfNull(next);
             Next = next;
         }
 

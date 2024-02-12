@@ -1,12 +1,16 @@
-﻿using Xunit;
+﻿using GenericsHomework;
+using Xunit;
 
 namespace GenericsHomeworkTests
 {
-    public class UnitTest1
+    public class NodeTests
     {
         [Fact]
-        public void TestMethod1()
+        public void SetNext_Null()
         {
+            Node<String> node1 = new("string");
+           
+            Assert.Throws<ArgumentNullException>(() => node1.SetNext(null!));
         }
     }
 }
