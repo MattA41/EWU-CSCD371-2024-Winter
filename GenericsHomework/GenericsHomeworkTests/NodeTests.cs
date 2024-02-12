@@ -39,6 +39,8 @@ namespace GenericsHomeworkTests
             Node<String> node1 = new("String");
             Node<String> node2 = new("String 2");
             Node<String> node3 = new("String 3");
+            node1.SetNext(node2);
+            node2.SetNext(node3);
 
             Assert.True(node1.Exists("String 2"));
         }
