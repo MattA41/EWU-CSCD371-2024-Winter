@@ -48,16 +48,22 @@ namespace GenericsHomework
         public bool Exists(T value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
-            if (this.Equals(Next)) return false;
-
-            if (value.Equals(Value))
+            Node<T> dummy = new(value)
             {
-                return true;
+                Next = Next
+            };
+            while (dummy.Next != (dummy.Next).Next)
+            {   if (dummy.Next.Value != null)
+                {
+                    if (dummy.Next.Value.Equals(value))
+                    {
+                        return true;
+                    }
+                }
+                dummy.Next = dummy.Next.Next;
+            
             }
-            else
-            {
-                return Exists(value);
-            }
+            return false;
         }
     }
 
