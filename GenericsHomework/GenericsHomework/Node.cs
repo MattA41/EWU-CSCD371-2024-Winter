@@ -35,8 +35,16 @@ namespace GenericsHomework
             {
                 return;
             }
+            Node<T> dummy = new(value)
+            {
+                Next = Next
+            };
+            while (dummy.Next != (dummy.Next).Next)
+            {
+                dummy.Next = dummy.Next.Next;
+            }
             Node<T> newNode = new(value);
-            Next = newNode;
+            dummy.Next.Next = newNode;
         }
         public void Clear()
         {

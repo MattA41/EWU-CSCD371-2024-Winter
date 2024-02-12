@@ -44,5 +44,16 @@ namespace GenericsHomeworkTests
 
             Assert.True(node1.Exists("String 2"));
         }
+        [Fact]
+        public void Append_TestIfAddsLast()
+        {
+            Node<String> node1 = new("String");
+            Node<String> node2 = new("String 2");
+            Node<String> node3 = new("String 3");
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node1.Append("String4");
+            Assert.True(node3.Next.Value.Equals("String4"));
+        }
     }
 }
