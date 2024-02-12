@@ -1,4 +1,4 @@
-﻿using GenericsHomework;
+using GenericsHomework;
 using Xunit;
 
 namespace GenericsHomeworkTests
