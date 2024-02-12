@@ -26,26 +26,41 @@ namespace GenericsHomework
 
         public override string ToString()
         {
-            //this to string uses the tostring method in the object type of value
-            return Value?.ToString() ?? string.Empty;
+            Node<T> dummy = new(this.Value)
+            {
+                Next = this
+            };
+            string ret = "";
+            // goes through linked list starting at node called
+            while (dummy.Next != (dummy.Next).Next)
+            {
+                if (dummy.Next.Value != null)
+                {
+
+                    ret += dummy.Next.Value.ToString();
+                }
+                dummy.Next = dummy.Next.Next;
+
+            }
+            
+            return ret;
         }
         public void Append(T value)
         {
             ArgumentNullException.ThrowIfNull(value);
-            if (Exists(Value))
+            if (Exists(value))
             {
                 return;
             }
             Node<T> dummy = new(value)
             {
-                Next = Next
+                Next = this
             };
             while (dummy.Next != (dummy.Next).Next)
             {
                 dummy.Next = dummy.Next.Next;
             }
-            Node<T> newNode = new(value);
-            dummy.Next.Next = newNode;
+            dummy.Next.Next = dummy;
         }
         public void Clear()
         {
@@ -59,7 +74,7 @@ namespace GenericsHomework
             ArgumentNullException.ThrowIfNull(value);
             Node<T> dummy = new(value)
             {
-                Next = Next
+                Next = this
             };
             while (dummy.Next != (dummy.Next).Next)
             {   if (dummy.Next.Value != null)

@@ -59,7 +59,7 @@ namespace GenericsHomeworkTests
         [Fact]
         public void Append_TestIfAddsLast()
         {
-            Node<String> node1 = new("String");
+            Node<String> node1 = new("String 1");
             Node<String> node2 = new("String 2");
             Node<String> node3 = new("String 3");
             node1.SetNext(node2);
