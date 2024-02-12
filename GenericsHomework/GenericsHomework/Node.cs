@@ -31,7 +31,7 @@ namespace GenericsHomework
         }
         public void Append(T value)
         {
-            ArgumentNullException.ThrowIfNull(() => value);
+            ArgumentNullException.ThrowIfNull(value);
             if (Exists(Value))
             {
                 return;

@@ -75,7 +75,6 @@ namespace GenericsHomeworkTests
             Node<String> node3 = new("String 3");
             node1.SetNext(node2);
             node2.SetNext(node3);
-            node1.Append(null!);
             Assert.Throws<ArgumentNullException>(() => node1.Append(null!));
 
         }
