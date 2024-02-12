@@ -12,5 +12,16 @@ namespace GenericsHomeworkTests
            
             Assert.Throws<ArgumentNullException>(() => node1.SetNext(null!));
         }
+        [Fact]
+        public void Clear_DeletesList()
+        {
+            Node<String> node1 = new("String");
+            Node<String> node2 = new("String 2");
+            Node<String> node3 = new("String 3");
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node1.Clear();
+            Assert.True(node1.Next.Equals(node1));
+        }
     }
 }
