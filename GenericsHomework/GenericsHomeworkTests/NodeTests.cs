@@ -33,6 +33,14 @@ namespace GenericsHomeworkTests
             Assert.True(node1.Next.Equals(node1));
         }
 
-        
+        [Fact]
+        public void Exists_TellsIfInList()
+        {
+            Node<String> node1 = new("String");
+            Node<String> node2 = new("String 2");
+            Node<String> node3 = new("String 3");
+
+            Assert.True(node1.Exists("String 2"));
+        }
     }
 }

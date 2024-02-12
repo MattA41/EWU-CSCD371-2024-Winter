@@ -48,7 +48,7 @@ namespace GenericsHomework
         public bool Exists(T value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
-            if (Next == null) return false;
+            if (this.Equals(Next)) return false;
 
             if (value.Equals(Value))
             {
