@@ -87,6 +87,13 @@ namespace GenericsHomework
                 dummy.Next = dummy.Next.Next;
             
             }
+            if (dummy.Next.Value != null)
+            {
+                if (dummy.Next.Value.Equals(value))
+                {
+                    return true;
+                }
+            }
             return false;
         }
     }

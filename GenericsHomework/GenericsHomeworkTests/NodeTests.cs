@@ -30,19 +30,37 @@ namespace GenericsHomeworkTests
             node1.SetNext(node2);
             node2.SetNext(node3);
             node1.Clear();
-            Assert.True(node1.Next.Equals(node1));
+            Assert.Equal(node1, node1.Next);
         }
 
         [Fact]
-        public void Exists_TellsIfInList()
+        public void Exists_TellsIfInList_Middle()
         {
             Node<String> node1 = new("String");
             Node<String> node2 = new("String 2");
             Node<String> node3 = new("String 3");
+            Node<String> node4 = new("String 4");
             node1.SetNext(node2);
             node2.SetNext(node3);
+            node3.SetNext(node4);
+            
+            //used Assert.True because exsists returns true or false if the item exsits
+            Assert.True(node1.Exists("String 3"));
+        }
 
-            Assert.True(node1.Exists("String 2"));
+        [Fact]
+        public void Exists_TellsIfInList_End()
+        {
+            Node<String> node1 = new("String");
+            Node<String> node2 = new("String 2");
+            Node<String> node3 = new("String 3");
+            Node<String> node4 = new("String 4");
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node3.SetNext(node4);
+
+            //used Assert.True because exsists returns true or false if the item exsits
+            Assert.True(node1.Exists("String 4"));
         }
 
         [Fact]
@@ -64,8 +82,10 @@ namespace GenericsHomeworkTests
             Node<String> node3 = new("String 3");
             node1.SetNext(node2);
             node2.SetNext(node3);
-            node1.Append("String4");
-            Assert.True(node3.Next.Value.Equals("String4"));
+            string data = "String4";
+            node1.Append(data);
+
+            Assert.Equal(node3.Next.Value, data);
         }
         [Fact]
         public void Append_TestNullValue()
