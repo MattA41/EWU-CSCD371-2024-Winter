@@ -18,7 +18,7 @@ public class Node<T>
 
     public void SetNext(Node<T> next)
     {
-        // I think having the check has made it so that next cannot 
+        // I think having the check has made it so that next cannot be null
         ArgumentNullException.ThrowIfNull(next);
         Next = next;
     }

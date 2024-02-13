@@ -97,5 +97,15 @@ public class NodeTests
         Assert.Throws<ArgumentNullException>(() => node1.Append(null!));
 
     }
+
+    [Fact]
+    public void ToString_TestPrint()
+    {
+        Node<String> node1 = new("String");
+        node1.Append("String2");
+        node1.Append("String3");
+        string test = "StringString2String3";
+        Assert.Equal(node1.ToString(),test );
+    }
 }
 
