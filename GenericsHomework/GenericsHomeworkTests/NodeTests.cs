@@ -19,7 +19,7 @@ namespace GenericsHomeworkTests
             Node<String> node1 = new("String1");
             Node<String> node2 = new("String2");
             node1.SetNext(node2);
-            Assert.True(node1.Next.Equals(node2));
+            Assert.Equal(node1.Next, node2);
         }
         [Fact]
         public void Clear_DeletesList()
