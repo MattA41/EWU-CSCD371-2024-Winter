@@ -44,7 +44,7 @@ namespace GenericsHomeworkTests
             node2.SetNext(node3);
             node3.SetNext(node4);
             
-            //used Assert.True because exsists returns true or false if the item exsits
+            //used Assert.True because exists returns true or false if the item exits
             Assert.True(node1.Exists("String 3"));
         }
 
@@ -59,12 +59,12 @@ namespace GenericsHomeworkTests
             node2.SetNext(node3);
             node3.SetNext(node4);
 
-            //used Assert.True because exsists returns true or false if the item exsits
+            //used Assert.True because exists returns true or false if the item exits
             Assert.True(node1.Exists("String 4"));
         }
 
         [Fact]
-        public void Exsists_NullVal()
+        public void Exists_NullVal()
         {
             Node<String> node1 = new("String");
             Node<String> node2 = new("String 2");
