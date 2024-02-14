@@ -70,7 +70,18 @@ public class Node<T>
     }
     public void Clear()
     {
-        Next = this;
+
+        Node<T> current = this;
+        Node<T> temp = current.Next;
+
+        while (temp != current)
+        {
+            Node<T> nextTemp = temp.Next;
+            temp.Next = this; // Disconnect the node
+            temp = nextTemp;
+        }
+
+        current.Next = current;
         //All we need to do to clear the list is reconnect the next to the node itself. 
         //Since the other nodes are disconnected from the head node after this method executes, the remaining nodes are eligible for garbage collection
         //Since there is nothing to reference them, we do not need to worry about what happens to them. They are taken care of in garbage collection
