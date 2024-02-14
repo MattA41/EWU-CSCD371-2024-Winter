@@ -67,6 +67,7 @@ public class Node<T>
 
         Node<T> newNode = new(value);
         dummy.Next.Next = newNode;
+        newNode.Next = this.Next;
     }
     public void Clear()
     {
