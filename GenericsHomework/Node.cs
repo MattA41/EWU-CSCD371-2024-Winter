@@ -20,7 +20,7 @@ public class Node<T>
     {
         // I think having the check has made it so that next cannot be null
         ArgumentNullException.ThrowIfNull(next);
-        Next = next;
+        this.Next = next;
     }
 
     public override string ToString()
@@ -31,7 +31,7 @@ public class Node<T>
         };
         string ret = "";
         // goes through linked list starting at node called
-        while (dummy.Next != (dummy.Next).Next)
+        while (dummy.Next.Next != this)
         {
             if (dummy.Next.Value != null)
             {
@@ -60,14 +60,14 @@ public class Node<T>
         {
             Next = this
         };
-        while (dummy.Next != (dummy.Next).Next)
+        while (dummy.Next.Next != this)
         {
             dummy.Next = dummy.Next.Next;
         }
 
         Node<T> newNode = new(value);
         dummy.Next.Next = newNode;
-        newNode.Next = this.Next;
+        newNode.Next = this;
     }
     public void Clear()
     {
@@ -94,7 +94,7 @@ public class Node<T>
         {
             Next = this
         };
-        while (dummy.Next != (dummy.Next).Next)
+        while (dummy.Next.Next != this)
         {
             if (dummy.Next.Value != null)
             {

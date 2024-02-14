@@ -42,6 +42,7 @@ public class NodeTests
         node1.SetNext(node2);
         node2.SetNext(node3);
         node3.SetNext(node4);
+        node4.SetNext(node1);
 
         //used Assert.True because exists returns true or false if the item exits
         Assert.True(node1.Exists("String 3"));
@@ -57,6 +58,7 @@ public class NodeTests
         node1.SetNext(node2);
         node2.SetNext(node3);
         node3.SetNext(node4);
+        node4.SetNext(node1);
 
         //used Assert.True because exists returns true or false if the item exits
         Assert.True(node1.Exists("String 4"));
@@ -81,6 +83,7 @@ public class NodeTests
         Node<string> node3 = new("String 3");
         node1.SetNext(node2);
         node2.SetNext(node3);
+        node3.SetNext(node1);
         string data = "String4";
         node1.Append(data);
 
@@ -100,10 +103,13 @@ public class NodeTests
     [Fact]
     public void ToString_TestPrint()
     {
-        Node<string> node1 = new("String");
-        node1.Append("String2");
-        node1.Append("String3");
-        string test = "String String2 String3";
+        Node<string> node1 = new("String 1");
+        Node<string> node2 = new("String 2");
+        Node<string> node3 = new("String 3");
+        node1.SetNext(node2);
+        node2.SetNext(node3);
+        node3.SetNext(node1);
+        string test = "String 1 String 2 String 3";
         Assert.Equal(node1.ToString(),test );
     }
 }
