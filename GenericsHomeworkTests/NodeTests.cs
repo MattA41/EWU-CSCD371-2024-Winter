@@ -15,17 +15,17 @@ public class NodeTests
     [Fact]
     public void SetNext_GoodVal()
     {
-        Node<String> node1 = new("String1");
-        Node<String> node2 = new("String2");
+        Node<string> node1 = new("String1");
+        Node<string> node2 = new("String2");
         node1.SetNext(node2);
         Assert.Equal(node1.Next, node2);
     }
     [Fact]
     public void Clear_DeletesList()
     {
-        Node<String> node1 = new("String");
-        Node<String> node2 = new("String 2");
-        Node<String> node3 = new("String 3");
+        Node<string> node1 = new("String");
+        Node<string> node2 = new("String 2");
+        Node<string> node3 = new("String 3");
         node1.SetNext(node2);
         node2.SetNext(node3);
         node1.Clear();
@@ -35,10 +35,10 @@ public class NodeTests
     [Fact]
     public void Exists_TellsIfInList_Middle()
     {
-        Node<String> node1 = new("String");
-        Node<String> node2 = new("String 2");
-        Node<String> node3 = new("String 3");
-        Node<String> node4 = new("String 4");
+        Node<string> node1 = new("String");
+        Node<string> node2 = new("String 2");
+        Node<string> node3 = new("String 3");
+        Node<string> node4 = new("String 4");
         node1.SetNext(node2);
         node2.SetNext(node3);
         node3.SetNext(node4);
@@ -50,10 +50,10 @@ public class NodeTests
     [Fact]
     public void Exists_TellsIfInList_End()
     {
-        Node<String> node1 = new("String");
-        Node<String> node2 = new("String 2");
-        Node<String> node3 = new("String 3");
-        Node<String> node4 = new("String 4");
+        Node<string> node1 = new("String");
+        Node<string> node2 = new("String 2");
+        Node<string> node3 = new("String 3");
+        Node<string> node4 = new("String 4");
         node1.SetNext(node2);
         node2.SetNext(node3);
         node3.SetNext(node4);
@@ -65,9 +65,9 @@ public class NodeTests
     [Fact]
     public void Exists_NullVal()
     {
-        Node<String> node1 = new("String");
-        Node<String> node2 = new("String 2");
-        Node<String> node3 = new("String 3");
+        Node<string> node1 = new("String");
+        Node<string> node2 = new("String 2");
+        Node<string> node3 = new("String 3");
         node1.SetNext(node2);
         node2.SetNext(node3);
         Assert.Throws<ArgumentNullException>(() => node1.Exists(null!));
@@ -76,9 +76,9 @@ public class NodeTests
     [Fact]
     public void Append_TestIfAddsLast()
     {
-        Node<String> node1 = new("String 1");
-        Node<String> node2 = new("String 2");
-        Node<String> node3 = new("String 3");
+        Node<string> node1 = new("String 1");
+        Node<string> node2 = new("String 2");
+        Node<string> node3 = new("String 3");
         node1.SetNext(node2);
         node2.SetNext(node3);
         string data = "String4";
@@ -89,11 +89,10 @@ public class NodeTests
     [Fact]
     public void Append_TestNullValue()
     {
-        Node<String> node1 = new("String");
-        Node<String> node2 = new("String 2");
-        Node<String> node3 = new("String 3");
-        node1.SetNext(node2);
-        node2.SetNext(node3);
+        Node<string> node1 = new("String");
+        node1.Append("String 2");
+        node1.Append("String 3");
+        
         Assert.Throws<ArgumentNullException>(() => node1.Append(null!));
 
     }
@@ -101,10 +100,10 @@ public class NodeTests
     [Fact]
     public void ToString_TestPrint()
     {
-        Node<String> node1 = new("String");
+        Node<string> node1 = new("String");
         node1.Append("String2");
         node1.Append("String3");
-        string test = "StringString2String3";
+        string test = "String String2 String3";
         Assert.Equal(node1.ToString(),test );
     }
 }

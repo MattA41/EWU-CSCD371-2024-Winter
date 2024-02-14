@@ -36,10 +36,15 @@ public class Node<T>
             if (dummy.Next.Value != null)
             {
 
-                ret += dummy.Next.Value.ToString();
+                ret += dummy.Next.Value.ToString() + " ";
             }
             dummy.Next = dummy.Next.Next;
 
+        }
+        if (dummy.Next.Value != null)
+        {
+
+            ret += dummy.Next.Value.ToString();
         }
 
         return ret;
@@ -59,7 +64,9 @@ public class Node<T>
         {
             dummy.Next = dummy.Next.Next;
         }
-        dummy.Next.Next = dummy;
+
+        Node<T> newNode = new(value);
+        dummy.Next.Next = newNode;
     }
     public void Clear()
     {
