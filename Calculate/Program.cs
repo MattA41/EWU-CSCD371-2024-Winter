@@ -27,7 +27,7 @@ public class Program
             program.WriteLine("Please Enter Your Expression: ");
             expression = program.ReadLine();
             Calculator.TryCalculate(expression!, out int result);
-            program.WriteLine(result.ToString(IFormatProvider));
+            program.WriteLine(result.ToString());
 
         } while (Calculator.TryCalculate(expression!, out int res));
 
