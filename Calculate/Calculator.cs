@@ -8,7 +8,13 @@ namespace Calculate
 {
     public class Calculator
     {
-        //private IReadOnlyDictionary<TKey, TValue> MathematicalOperations;
+        public static IReadOnlyDictionary<char, Func<int, int, int>> MathematicalOperations { get; } = new Dictionary<char, Func<int, int, int>>
+        {
+             { '+', Add},
+             { '-' , Subtract },
+             { '/', Divide },
+               {'*', Multiple }
+        };
 
         public static int Add(int one, int two)
         {
@@ -28,7 +34,33 @@ namespace Calculate
         {
             return one / two;
         }
-        
+
+        public static bool TryCalculate(string expression, out int result)
+        {
+            result = 0;
+            string[] input = expression.Split(" ");
+            if (input.Length != 3)
+            {
+                return false;
+
+            }
+            if (int.TryParse(input[0], out int numOne) && int.TryParse(input[2], out int numtwo))
+            {
+            }
+            else
+            {
+                return false;
+            }
+
+            if (MathematicalOperations.TryGetValue(input[1][0], out Func<int, int, int>? operand))
+            {
+                result = operand(numOne, numtwo);
+                return true;
+            }
+
+            return false;
+
+        }
 
     }
 }
