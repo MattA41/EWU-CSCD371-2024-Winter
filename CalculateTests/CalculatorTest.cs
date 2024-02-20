@@ -28,6 +28,18 @@ public class CalculatorTest
     {
         Assert.Equal(0, Calculator.Subtract(1, 1));
     }
+    [Fact]
+    public void CalculateTryCalculate_GoodValue()
+    {
+        Assert.True(Calculator.TryCalculate("2 + 2", out var value));
+        Assert.Equal(4, value);
+    }
+    [Fact]
+    public void CalculateTryCalculate_BadValue()
+    {
+        Assert.False(Calculator.TryCalculate("T + Y", out var value));
+    }
+
 
 }
 
