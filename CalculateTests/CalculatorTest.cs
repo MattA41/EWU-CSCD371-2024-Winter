@@ -21,12 +21,12 @@ public class CalculatorTest
     [Fact]
     public void CalculateDivide_Expected()
     {
-        Assert.Equal(2, Calculator.Multiple(2, 1));
+        Assert.Equal(2, Calculator.Divide(2, 1));
     }
     [Fact]
     public void CalculateSubtract_Expected()
     {
-        Assert.Equal(0, Calculator.Multiple(1, 1));
+        Assert.Equal(0, Calculator.Subtract(1, 1));
     }
 
 }

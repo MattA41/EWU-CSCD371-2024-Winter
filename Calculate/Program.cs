@@ -14,5 +14,18 @@ public class Program
         WriteLine ??= Console.WriteLine;
         ReadLine ??= Console.ReadLine;
     }
+    public static void Main(string[] args)
+    {
 
+        string? expression = "Test";
+        Program program = new();
+        
+            program.WriteLine("Please Enter Your Expression: ");
+            expression = program.ReadLine();
+
+        
+
+    }
 }
+
+
