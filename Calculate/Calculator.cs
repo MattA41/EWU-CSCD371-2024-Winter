@@ -46,19 +46,18 @@ namespace Calculate
             }
             if (int.TryParse(input[0], out int numOne) && int.TryParse(input[2], out int numtwo))
             {
+                if (MathematicalOperations.TryGetValue(input[1][0], out Func<int, int, int>? operand))
+                {
+                    result = operand(numOne, numtwo);
+                    return true;
+                }
+                return false;
             }
             else
             {
                 return false;
             }
 
-            if (MathematicalOperations.TryGetValue(input[1][0], out Func<int, int, int>? operand))
-            {
-                result = operand(numOne, numtwo);
-                return true;
-            }
-
-            return false;
 
         }
 

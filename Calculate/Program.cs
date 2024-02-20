@@ -19,11 +19,14 @@ public class Program
 
         string? expression = "Test";
         Program program = new();
-        
+        do
+        {
             program.WriteLine("Please Enter Your Expression: ");
             expression = program.ReadLine();
+            Calculator.TryCalculate(expression!, out int result);
+            program.WriteLine(result.ToString());
 
-        
+        } while (Calculator.TryCalculate(expression!, out int res));
 
     }
 }
