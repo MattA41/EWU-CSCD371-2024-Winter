@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CalculateTests;
+#pragma warning disable CA1707
 public class CalculatorTest
 {
     [Fact]
@@ -40,6 +41,6 @@ public class CalculatorTest
         Assert.False(Calculator.TryCalculate("T + Y", out var value));
     }
 
-
+#pragma warning restore CA1707
 }
 

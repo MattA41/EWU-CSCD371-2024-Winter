@@ -17,10 +17,10 @@ public class Program
         WriteLine ??= Console.WriteLine;
         ReadLine ??= Console.ReadLine;
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
 
-        string? expression = "Test";
+        string? expression = "";
         Program program = new();
         do
         {
@@ -29,7 +29,7 @@ public class Program
             Calculator.TryCalculate(expression!, out int result);
             program.WriteLine(result.ToString("N", System.Globalization.CultureInfo.CurrentCulture));
 
-        } while (Calculator.TryCalculate(expression!, out int res));
+        } while (Calculator.TryCalculate(expression!, out _));
 
     }
 }
