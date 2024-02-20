@@ -15,10 +15,8 @@ public class ProgramTests
         {
             WriteLine = (text) =>
             {
-                
                 if (text != null)
                 {
-                    
                     Assert.Equal(expectedOutput, text);
                 }
                 else
