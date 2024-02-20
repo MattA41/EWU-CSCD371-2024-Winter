@@ -27,7 +27,7 @@ public class Program
             program.WriteLine("Please Enter Your Expression: ");
             expression = program.ReadLine();
             Calculator.TryCalculate(expression!, out int result);
-            program.WriteLine(result.ToString());
+            program.WriteLine(result.ToString("N", System.Globalization.CultureInfo.CurrentCulture));
 
         } while (Calculator.TryCalculate(expression!, out int res));
 
