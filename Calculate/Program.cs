@@ -1,6 +1,5 @@
 using static Calculate.Program;
 
-using
 namespace Calculate;
 
 public class Program
