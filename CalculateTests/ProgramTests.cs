@@ -31,7 +31,7 @@ public class ProgramTests
             }
         };
 
-        program.WriteLine(program.ReadLine());
+        program.WriteLine(program.ReadLine()!);
 
 
     }
