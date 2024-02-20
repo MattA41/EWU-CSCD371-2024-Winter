@@ -15,7 +15,16 @@ public class ProgramTests
         {
             WriteLine = (text) =>
             {
-                Assert.Equal(expectedOutput, text);
+                
+                if (text != null)
+                {
+                    
+                    Assert.Equal(expectedOutput, text);
+                }
+                else
+                {
+                    Assert.True(false, "The output should not be null.");
+                }
             },
             ReadLine = () =>
             {
