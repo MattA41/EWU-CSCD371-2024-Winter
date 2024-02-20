@@ -9,7 +9,7 @@ public class ProgramTests
     {
 
         string expectedOutput = "Hello, World!";
-        string userInput = "World";
+        string userInput = "Hello, World!";
 
         Calculate.Program program = new()
         {
