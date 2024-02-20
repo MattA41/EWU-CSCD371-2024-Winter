@@ -1,12 +1,14 @@
-﻿namespace Calculate;
+﻿using static Calculate.Program;
+
+namespace Calculate;
 public class Program
 {
-    public delegate void WriteLineDelegate(string text);
-    public delegate string? ReadLineDelegate();
+    public delegate void DelegateWriteLine(string text);
+    public delegate string? DelegateReadLine();
 
 
-    public WriteLineDelegate WriteLine { get; init; }
-    public ReadLineDelegate ReadLine { get; init; }
+    public DelegateWriteLine WriteLine { get; init; }
+    public DelegateReadLine ReadLine { get; init; }
 
 
     public Program()
