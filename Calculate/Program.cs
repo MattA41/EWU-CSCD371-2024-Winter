@@ -1,6 +1,8 @@
-﻿using static Calculate.Program;
+using static Calculate.Program;
 
+using
 namespace Calculate;
+
 public class Program
 {
     public delegate void DelegateWriteLine(string text);
@@ -26,7 +28,7 @@ public class Program
             program.WriteLine("Please Enter Your Expression: ");
             expression = program.ReadLine();
             Calculator.TryCalculate(expression!, out int result);
-            program.WriteLine(result.ToString());
+            program.WriteLine(result.ToString(IFormatProvider));
 
         } while (Calculator.TryCalculate(expression!, out int res));
 
