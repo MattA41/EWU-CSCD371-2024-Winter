@@ -1,3 +1,4 @@
+using System.Data;
 using static Calculate.Program;
 
 namespace Calculate;
@@ -22,14 +23,15 @@ public class Program
 
         string? expression = "";
         Program program = new();
+        Calculator calc = new();
         do
         {
             program.WriteLine("Please Enter Your Expression: ");
             expression = program.ReadLine();
-            Calculator.TryCalculate(expression!, out int result);
+            calc.TryCalculate(expression!, out int result);
             program.WriteLine(result.ToString("N", System.Globalization.CultureInfo.CurrentCulture));
 
-        } while (Calculator.TryCalculate(expression!, out _));
+        } while (calc.TryCalculate(expression!, out _));
 
     }
 }

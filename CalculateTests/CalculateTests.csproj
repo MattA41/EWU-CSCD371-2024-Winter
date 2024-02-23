@@ -4,6 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <LangVersion>latest</LangVersion>
+	  <EnableNetAnalyzer>true</EnableNetAnalyzer>
+	  <AnalysisLevel>latest</AnalysisLevel>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>

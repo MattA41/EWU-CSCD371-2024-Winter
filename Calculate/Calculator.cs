@@ -31,10 +31,14 @@ public class Calculator
 
     public static int Divide(int one, int two)
     {
+        if (two == 0)
+        {
+            throw new ArgumentException("Cant divide by 0");
+        }
         return one / two;
     }
 
-    public static bool TryCalculate(string expression, out int result)
+    public  bool TryCalculate(string expression, out int result)
     {
         result = 0;
         string[] input = expression.Split(" ");
