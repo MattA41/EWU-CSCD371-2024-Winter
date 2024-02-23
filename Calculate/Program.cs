@@ -28,7 +28,7 @@ public class Program
         {
             program.WriteLine("Please Enter Your Expression: or 'q' to exit");
             expression = program.ReadLine();
-            if (expression!.Contains("q"))
+            if (expression!.Contains('q'))
             {
                 program.WriteLine("Exiting");
                 break;
@@ -37,7 +37,7 @@ public class Program
             Calculator.TryCalculate(expression!, out int result);
             program.WriteLine(result.ToString("N", System.Globalization.CultureInfo.CurrentCulture));
 
-        } while (Calculator.TryCalculate(expression!, out _) && !expression!.Contains("q"));
+        } while (Calculator.TryCalculate(expression!, out _) && !expression!.Contains('q'));
 
     }
 }
