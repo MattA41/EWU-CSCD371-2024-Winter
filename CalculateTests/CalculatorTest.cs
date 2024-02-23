@@ -38,7 +38,7 @@ public class CalculatorTest
     [Fact]
     public void CalculateTryCalculate_BadValue()
     {
-        Assert.False(Calculator.TryCalculate("T + Y", out var value));
+        Assert.False(Calculator.TryCalculate("T + Y", out _));
     }
 
 #pragma warning restore CA1707
