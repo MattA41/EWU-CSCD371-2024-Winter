@@ -38,7 +38,7 @@ public class Calculator
         return one / two;
     }
 
-    public  bool TryCalculate(string expression, out int result)
+    public static bool TryCalculate(string expression, out int result)
     {
         result = 0;
         string[] input = expression.Split(" ");
@@ -47,11 +47,11 @@ public class Calculator
             return false;
 
         }
-        if (int.TryParse(input[0], out int numOne) && int.TryParse(input[2], out int numtwo))
+        if (int.TryParse(input[0], out int numOne) && int.TryParse(input[2], out int numTwo))
         {
             if (MathematicalOperations.TryGetValue(input[1][0], out Func<int, int, int>? operand))
             {
-                result = operand(numOne, numtwo);
+                result = operand(numOne, numTwo);
                 return true;
             }
             return false;

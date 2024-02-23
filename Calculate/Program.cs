@@ -28,10 +28,10 @@ public class Program
         {
             program.WriteLine("Please Enter Your Expression: ");
             expression = program.ReadLine();
-            calc.TryCalculate(expression!, out int result);
+            Calculator.TryCalculate(expression!, out int result);
             program.WriteLine(result.ToString("N", System.Globalization.CultureInfo.CurrentCulture));
 
-        } while (calc.TryCalculate(expression!, out _));
+        } while (Calculator.TryCalculate(expression!, out _));
 
     }
 }
