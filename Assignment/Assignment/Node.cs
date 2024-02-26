@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Assignment;
 
@@ -26,24 +27,32 @@ public class Node<T> : IEnumerable<T>
 
     private class NodeEnumerator(Node<T> node) : IEnumerator<T>
     {
-        public object Current => node;
+        private Node<T> Head => node;
 
+        public object Current => Head;
+
+        private Node<T> CurrentNode
+        {
+            get => node;
+            set => node = value;
+        }
 
         T IEnumerator<T>.Current => (T)Current;
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        void IDisposable.Dispose() {}
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            if ((Node<T>)CurrentNode.Next != Head)
+            {
+                CurrentNode = CurrentNode.Next;
+                return true;
+            }
+            return false;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            CurrentNode = Head;
         }
     }
 
