@@ -24,15 +24,12 @@ public class Node<T> : IEnumerable<T>
         return GetEnumerator();
     }
 
-    private class NodeEnumerator : IEnumerator<T>
+    private class NodeEnumerator(Node<T> node) : IEnumerator<T>
     {
-        public NodeEnumerator(Node<T> node)
-        {
+        public object Current => node;
 
-        }
-        public object Current => throw new NotImplementedException();
 
-        T IEnumerator<T>.Current => throw new NotImplementedException();
+        T IEnumerator<T>.Current => (T)Current;
 
         public void Dispose()
         {
