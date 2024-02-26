@@ -14,6 +14,31 @@ public class Node<T> : IEnumerable<T>
         Next = this;
     }
 
+     public IEnumerator<T> GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+
+    private class NodeEnumerator : IEnumerator
+    {
+        public object Current => throw new NotImplementedException();
+
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public void Append(T data)
     {
 
@@ -31,12 +56,6 @@ public class Node<T> : IEnumerable<T>
         cur.Next = nextNode;
     }
 
-    public IEnumerator<T> GetEnumerator()
-    {
-
-        throw new NotImplementedException();
-    }
-
     public override string ToString()
     {
         Node<T> cur = this;
@@ -51,11 +70,6 @@ public class Node<T> : IEnumerable<T>
 
         outPut += "}";
         return outPut;
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
     }
 
     public bool Exists(T data)
@@ -82,13 +96,4 @@ public class Node<T> : IEnumerable<T>
         Next = this;
     }
 
-    public IEnumerator<T> GetEnumerator()
-    {
-        throw new NotImplementedException();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        throw new NotImplementedException();
-    }
 }
