@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Assignment;
 
-public class Node<T>
+public class Node<T> : IEnumerable<T>
 {
     public T Data { get; set; }
     public Node(T data)
@@ -29,6 +31,12 @@ public class Node<T>
         cur.Next = nextNode;
     }
 
+    public IEnumerator<T> GetEnumerator()
+    {
+
+        throw new NotImplementedException();
+    }
+
     public override string ToString()
     {
         Node<T> cur = this;
@@ -43,6 +51,11 @@ public class Node<T>
 
         outPut += "}";
         return outPut;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 
     public bool Exists(T data)
