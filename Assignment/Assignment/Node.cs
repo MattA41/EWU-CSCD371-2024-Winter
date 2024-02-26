@@ -7,12 +7,12 @@ namespace Assignment;
 public class Node<T> : IEnumerable<T>
 {
     public T Data { get; set; }
+    public Node<T> Next { get; private set;}
     public Node(T data)
     {
         Data = data;
         Next = this;
     }
-    public Node<T> Next { get; private set;}
 
     public void Append(T data)
     {
@@ -80,5 +80,15 @@ public class Node<T> : IEnumerable<T>
     public void Clear()
     {
         Next = this;
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        throw new NotImplementedException();
     }
 }
