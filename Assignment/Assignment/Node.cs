@@ -16,17 +16,28 @@ public class Node<T> : IEnumerable<T>
 
      public IEnumerator<T> GetEnumerator()
     {
-        throw new NotImplementedException();
+       return new NodeEnumerator(this);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        throw new NotImplementedException();
+        return GetEnumerator();
     }
 
-    private class NodeEnumerator : IEnumerator
+    private class NodeEnumerator : IEnumerator<T>
     {
+        public NodeEnumerator(Node<T> node)
+        {
+
+        }
         public object Current => throw new NotImplementedException();
+
+        T IEnumerator<T>.Current => throw new NotImplementedException();
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         public bool MoveNext()
         {
