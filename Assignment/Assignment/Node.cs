@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace Assignment;
 
@@ -129,5 +128,4 @@ public class Node<T> : IEnumerable<T>
 
         return list;
     }
-
 }
