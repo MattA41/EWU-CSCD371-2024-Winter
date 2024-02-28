@@ -113,4 +113,21 @@ public class Node<T> : IEnumerable<T>
         Next = this;
     }
 
+    public IEnumerable<T> ChildItems(int max)
+    {
+        int i  = 0;
+        Node<T> curr = this;
+        Node<T> myList = new(curr.Data);
+        while (i<max)
+        {
+            curr = curr.Next;
+            myList.Append(curr.Data);
+            i++;
+        }
+
+        IEnumerable<T> list = myList;
+
+        return list;
+    }
+
 }
