@@ -1,4 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Linq;
 using Xunit;
 
 namespace Assignment.Tests;
@@ -84,5 +88,27 @@ public class NodeTests
         node.Append(3.1);
         node.Clear();
         Assert.Equal(node.Data, node.Next.Data);
+    }
+
+    [Fact]
+    public void MoveNext_Successful()
+    {
+        Node<int> headNode = new(1);
+        headNode.Append(3);
+        headNode.Append(4);
+        IEnumerator<int> test = headNode.GetEnumerator();
+        Assert.True(test.MoveNext());
+        test.Dispose();
+    }
+
+   [Fact]
+    public void Node_ChildItems_successful()
+    {
+        Node<int> headNode = new(1);
+        headNode.Append(3);
+        headNode.Append(4); 
+        IEnumerable<int> test = headNode.ChildItems(2);
+        Assert.NotEmpty(test);
+        //Assert.Equal<int>(2, test.Count());
     }
 }

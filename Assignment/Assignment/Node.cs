@@ -117,7 +117,7 @@ public class Node<T> : IEnumerable<T>
         int i  = 0;
         Node<T> curr = this;
         Node<T> myList = new(curr.Data);
-        while (i<max)
+        while (i < max)
         {
             curr = curr.Next;
             myList.Append(curr.Data);
