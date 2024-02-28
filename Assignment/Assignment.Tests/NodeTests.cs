@@ -108,7 +108,8 @@ public class NodeTests
         headNode.Append(3);
         headNode.Append(4); 
         IEnumerable<int> test = headNode.ChildItems(2);
-        Assert.NotEmpty(test);
-        //Assert.Equal<int>(2, test.Count());
+        int count = (from x in test select x).Count();
+        //Assert.NotEmpty(test);
+        Assert.Equal<int>(2, count);
     }
 }
