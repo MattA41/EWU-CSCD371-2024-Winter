@@ -26,9 +26,9 @@ public class Node<T> : IEnumerable<T>
 
     private class NodeEnumerator(Node<T> node) : IEnumerator<T>
     {
-        private Node<T> Head => node;
+        private T Head => node.Data;
 
-        public object Current => Head;
+        public object Current => Head!;
 
         private Node<T> CurrentNode
         {
@@ -36,12 +36,12 @@ public class Node<T> : IEnumerable<T>
             set => node = value;
         }
 
-        T IEnumerator<T>.Current => (T)Current;
+        T IEnumerator<T>.Current => (T)CurrentNode.Data;
         void IDisposable.Dispose() {}
 
         public bool MoveNext()
         {
-            if ((Node<T>)CurrentNode.Next != Head)
+            if (CurrentNode.Next.Data!.Equals(Head))
             {
                 CurrentNode = CurrentNode.Next;
                 return true;
@@ -51,7 +51,7 @@ public class Node<T> : IEnumerable<T>
 
         public void Reset()
         {
-            CurrentNode = Head;
+            CurrentNode = node;
         }
     }
 
