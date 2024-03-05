@@ -47,11 +47,18 @@ namespace Assignment.Tests;
         }
 
         [Fact]
-        public void People_IsPersonObject_true()
+        public void People_HasNumOfPeople_true()
         {
             IEnumerable<IPerson> peopleList = new SampleData().People;
             Assert.Equal(50,peopleList.Count());
             
+        }
+
+        [Fact]
+        public void People_FirstPerson_IsCorrect()
+        {
+            IEnumerable<IPerson> peopleList = new SampleData().People;
+            Assert.Equal("Fremont",peopleList.ElementAt(0).FirstName);
         }
 
     }
