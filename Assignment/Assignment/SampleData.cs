@@ -41,7 +41,7 @@ namespace Assignment;
         {
             get
             {
-                IEnumerable<IPerson> people = CsvRows.Select(row => row.Split(',')).OrderBy(person => (person[5], person[6], person)).Select(person => new Person(person[1], person[2], new Address(person[4], person[5], person[6], person[7]), person[3]));
+                IEnumerable<IPerson> people = CsvRows.Select(row => row.Split(',')).OrderBy(person => person[5]).ThenBy(person => person[6]).ThenBy(person => person[7]).Select(person => new Person(person[1], person[2], new Address(person[4], person[5], person[6], person[7]), person[3]));
                 return people;
             }
         }
