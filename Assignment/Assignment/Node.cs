@@ -15,45 +15,21 @@ public class Node<T> : IEnumerable<T>
     }
 
      public IEnumerator<T> GetEnumerator()
-    {
-       return new NodeEnumerator(this);
-    }
+     {
+         Node<T> current = this;
+
+         while (current.Next != this)
+         {
+             yield return current.Data;
+             current = current.Next;
+         }
+     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator();
     }
 
-    private class NodeEnumerator(Node<T> node) : IEnumerator<T>
-    {
-        private T Head => node.Data;
-
-        public object Current => Head!;
-
-        private Node<T> CurrentNode
-        {
-            get => node;
-            set => node = value;
-        }
-
-        T IEnumerator<T>.Current => (T)CurrentNode.Data;
-        void IDisposable.Dispose() {}
-
-        public bool MoveNext()
-        {
-            if (CurrentNode.Next.Data!.Equals(Head))
-            {
-                CurrentNode = CurrentNode.Next;
-                return true;
-            }
-            return false;
-        }
-
-        public void Reset()
-        {
-            CurrentNode = node;
-        }
-    }
 
     public void Append(T data)
     {
