@@ -1,12 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Assignment;
 
     public class SampleData : ISampleData
     {
+        string path = "People.csv";
         // 1.
-        public IEnumerable<string> CsvRows => throw new NotImplementedException();
+        public IEnumerable<string> CsvRows
+        {
+            get
+            { 
+                foreach(string line in File.ReadLines(path).Skip(1))
+                {
+                    yield return line;
+                }
+            }
+        }
 
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
