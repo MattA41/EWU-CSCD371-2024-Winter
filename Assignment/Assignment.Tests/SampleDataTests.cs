@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -22,6 +23,16 @@ namespace Assignment.Tests;
             IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToList();
             bool test = states.Zip(states, (first, second) => first.CompareTo(second) < 0 || first.Equals(second, StringComparison.Ordinal)).All(rows => rows);
             Assert.True(test);
+            
+        }
+
+        [Fact]
+        public void GetUniqueSortedListOfStatesGivenCsvRows_HardCodeVals_correct()
+        {
+            IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToArray();
+            string[] stateStrings = new[] { "WA", "MT", "FL", "GA" };
+            //TODO find assert statement
+            
         }
 
     }
