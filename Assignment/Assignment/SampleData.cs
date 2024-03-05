@@ -23,7 +23,7 @@ namespace Assignment;
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()  
         {
-            return (IEnumerable<string>)CsvRows.Select(rows => rows.Split(',')).OrderBy(state => state);
+            return (IEnumerable<string>)CsvRows.Select(rows => rows.Split(',')).Distinct().OrderBy(state => state);
         }
 
         // 3.

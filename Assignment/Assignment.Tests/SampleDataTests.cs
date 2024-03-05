@@ -15,4 +15,12 @@ namespace Assignment.Tests;
             IEnumerable<string> csvOut = new SampleData().CsvRows.ToList();
             Assert.Equal(50,csvOut.Count());
         }
+
+        [Fact]
+        public void GetUniqueSortedListOfStatesGivenCsvRows_Output_Correct()
+        {
+            IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows();
+            //Assert.Contains()
+        }
+
     }
