@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
@@ -43,6 +44,14 @@ namespace Assignment.Tests;
         {
             string states = new SampleData().GetAggregateSortedListOfStatesUsingCsvRows();
             Assert.Equal("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV", states);
+        }
+
+        [Fact]
+        public void People_IsPersonObject_true()
+        {
+            IEnumerable<IPerson> peopleList = new SampleData().People;
+            Assert.Equal(50,peopleList.Count());
+            
         }
 
     }
