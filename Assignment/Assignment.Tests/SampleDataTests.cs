@@ -25,14 +25,14 @@ namespace Assignment.Tests;
             Assert.True(test);
             
         }
-
-        [Fact]
-        public void GetUniqueSortedListOfStatesGivenCsvRows_HardCodeVals_correct()
+    [InlineData("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577")]
+        [Theory]
+        public void GetUniqueSortedListOfStatesGivenCsvRows_HardCodeVals_correct(string row)
         {
-            IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToArray();
-            string[] stateStrings = new[] { "WA", "MT", "FL", "GA" };
+            IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToList();
             //TODO find assert statement
-            
+            Assert.Contains(row, states);
+
         }
 
     }
