@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Assignment;
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()  
         {
-            return (IEnumerable<string>)CsvRows.Select(rows => rows.Split(',')).Distinct().OrderBy(state => state);
+            return CsvRows.Distinct().OrderBy(state => state);
         }
 
         // 3.
