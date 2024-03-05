@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks.Dataflow;
 
 namespace Assignment;
 
@@ -28,7 +29,10 @@ namespace Assignment;
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
-            => throw new NotImplementedException();
+        {
+            return string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows());
+        }
+           
 
         // 4.
         public IEnumerable<IPerson> People => throw new NotImplementedException();
