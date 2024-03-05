@@ -24,13 +24,14 @@ namespace Assignment;
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()  
         {
-            return CsvRows.Distinct().OrderBy(state => state);
+            return CsvRows.Select(row => row.Split(',')[6]).Distinct().OrderBy(state => state);
         }
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
         {
-            return string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows().Select(states => states).ToArray());
+            IEnumerable<string> states = GetUniqueSortedListOfStatesGivenCsvRows().ToArray();
+            return string.Join(", ", states);
         }
            
 

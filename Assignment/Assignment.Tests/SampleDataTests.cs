@@ -42,7 +42,7 @@ namespace Assignment.Tests;
         public void GetAggregateSortedListOfStatesUsingCsvRows_Output_NotNull()
         {
             string states = new SampleData().GetAggregateSortedListOfStatesUsingCsvRows();
-            Assert.NotNull(states);
+            Assert.Equal("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV", states);
         }
 
     }
