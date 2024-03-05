@@ -26,9 +26,9 @@ namespace Assignment.Tests;
             
         }
 
-        [InlineData("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577")]
-        [InlineData("2,Karin,Joder,kjoder1@quantcast.com,03594 Florence Park,Tampa,FL,71961")]
-        [InlineData("3,Chadd,Stennine,cstennine2@wired.com,94148 Kings Terrace,Long Beach,CA,59721")]
+        [InlineData("MT")]
+        [InlineData("FL")]
+        [InlineData("CA")]
         [Theory]
         public void GetUniqueSortedListOfStatesGivenCsvRows_HardCodeVals_correct(string row)
         {
