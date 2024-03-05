@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks.Dataflow;
@@ -36,7 +37,15 @@ namespace Assignment;
            
 
         // 4.
-        public IEnumerable<IPerson> People => throw new NotImplementedException();
+        public IEnumerable<IPerson> People
+        {
+            get
+            {
+                IEnumerable<IPerson> people = CsvRows.Select(row => row.Split(',')).OrderBy(person => (person[5], person[6], person)).Select(person => new Person(person[1], person[2], new Address(person[4], person[5], person[6], person[7]), person[3]));
+                return people;
+            }
+        }
+  
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
