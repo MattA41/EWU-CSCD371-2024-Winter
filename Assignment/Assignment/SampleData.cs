@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assignment
-{
+namespace Assignment;
+
     public class SampleData : ISampleData
     {
         // 1.
@@ -27,4 +27,4 @@ namespace Assignment
         public string GetAggregateListOfStatesGivenPeopleCollection(
             IEnumerable<IPerson> people) => throw new NotImplementedException();
     }
-}
+
