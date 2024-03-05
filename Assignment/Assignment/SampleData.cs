@@ -21,8 +21,10 @@ namespace Assignment;
         }
 
         // 2.
-        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
-            => throw new NotImplementedException();
+        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()  
+        {
+            return (IEnumerable<string>)CsvRows.Select(rows => rows.Split(',')).OrderBy(state => state);
+        }
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
