@@ -30,7 +30,7 @@ namespace Assignment;
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
         {
-            return string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows());
+            return string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows().Select(states => states).ToArray());
         }
            
 
