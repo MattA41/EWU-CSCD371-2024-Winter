@@ -38,5 +38,11 @@ namespace Assignment.Tests;
 
         }
 
+        [Fact]
+        public void GetAggregateSortedListOfStatesUsingCsvRows_Output_NotNull()
+        {
+            string states = new SampleData().GetAggregateSortedListOfStatesUsingCsvRows();
+            Assert.NotNull(states);
+        }
 
     }
