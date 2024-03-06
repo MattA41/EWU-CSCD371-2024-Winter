@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -34,7 +34,6 @@ namespace Assignment.Tests;
         public void GetUniqueSortedListOfStatesGivenCsvRows_HardCodeVals_correct(string row)
         {
             IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToList();
-            //TODO find assert statement
             Assert.Contains(row, states);
 
         }
