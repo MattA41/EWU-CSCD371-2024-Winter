@@ -9,7 +9,7 @@ namespace Assignment;
 
     public class SampleData : ISampleData
     {
-    readonly string path = "People.csv";
+        string path = "People.csv";
         // 1.
         public IEnumerable<string> CsvRows
         {
