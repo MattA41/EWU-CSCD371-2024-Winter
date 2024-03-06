@@ -22,7 +22,7 @@ namespace Assignment.Tests;
         public void GetUniqueSortedListOfStatesGivenCsvRows_Output_Correct()
         {
             IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToList();
-            bool test = states.Zip(states, (first, second) => first.CompareTo(second) < 0 || first.Equals(second, StringComparison.Ordinal)).All(rows => rows);
+            bool test = states.Zip(states, (first, second) => String.Compare(first, second, StringComparison.Ordinal) < 0 || first.Equals(second, StringComparison.Ordinal)).All(rows => rows);
             Assert.True(test);
             
         }
@@ -34,7 +34,6 @@ namespace Assignment.Tests;
         public void GetUniqueSortedListOfStatesGivenCsvRows_HardCodeVals_correct(string row)
         {
             IEnumerable<string> states = new SampleData().GetUniqueSortedListOfStatesGivenCsvRows().ToList();
-            //TODO find assert statement
             Assert.Contains(row, states);
 
         }
