@@ -73,10 +73,10 @@ namespace Assignment.Tests;
         public void People_GetAggregateListOfStatesGivenPeopleCollection_ReturnsExpectedPerson()
         {
             IEnumerable<IPerson> people = new SampleData().People;
-            IEnumerable<string> outState = new SampleData().GetAggregateListOfStatesGivenPeopleCollection(people).Split(',').OrderBy(state => state).ToList();
+            IEnumerable<string> outState = new SampleData().GetAggregateListOfStatesGivenPeopleCollection(people).Split(", ").OrderBy(state => state).ToList();
             string states = new SampleData().GetAggregateSortedListOfStatesUsingCsvRows();
 
-            string statesStr = string.Join(",", outState);
+            string statesStr = string.Join(", ", outState);
 
             Assert.Contains(states, statesStr);
         }
