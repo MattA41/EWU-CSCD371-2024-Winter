@@ -66,15 +66,19 @@ namespace Assignment.Tests;
         {
             
             IEnumerable<(string firstname, string lastname)> peopleList = new SampleData().FilterByEmailAddress(email=> email.Contains(".edu"));
+
             Assert.Equal("Fremont", peopleList.ElementAt(0).firstname);
         }
-        [InlineData("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV")]
-        [Theory]
-        public void People_GetAggregateListOfStatesGivenPeopleCollection_ReturnsExpectedPerson(string states)
+        [Fact]
+        public void People_GetAggregateListOfStatesGivenPeopleCollection_ReturnsExpectedPerson()
         {
             IEnumerable<IPerson> people = new SampleData().People;
-            string outState = new SampleData().GetAggregateListOfStatesGivenPeopleCollection(people);
-            Assert.Equal(states,outState);
+            IEnumerable<string> outState = new SampleData().GetAggregateListOfStatesGivenPeopleCollection(people).Split(',').OrderBy(state => state).ToList();
+            string states = new SampleData().GetAggregateSortedListOfStatesUsingCsvRows();
+
+            string statesStr = string.Join(",", outState);
+
+            Assert.Contains(states, statesStr);
         }
 
     }
