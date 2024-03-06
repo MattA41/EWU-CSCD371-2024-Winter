@@ -53,7 +53,7 @@ namespace Assignment;
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
-            IEnumerable<IPerson> people) => People.Select(currPerson => currPerson.Address.State).Distinct().Aggregate((first, second) => first + ", " + second);
+            IEnumerable<IPerson> people) => People.Select(currPerson => currPerson.Address.State).Distinct().Aggregate((first, second) => $"{first}, {second}");
     }
 
  
