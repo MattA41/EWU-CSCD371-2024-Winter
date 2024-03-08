@@ -11,7 +11,7 @@ public class NodeTests
 {
 
     [Fact]
-    public void Node_NextPointToItself_Success()
+    public void SingleNode_NextPointToItself_Success()
     {
         Node<string> node = new("Inigo Montoya");
         Assert.Equal(node, node.Next);
