@@ -56,7 +56,10 @@ public class PingProcessTests
 
     [TestMethod]
     public void RunTaskAsync_Success()
+    //testing to see if the task ended correctly
     {
+         Task<PingResult> output = Sut.RunTaskAsync("localhost");
+         AssertValidPingOutput(output.Result.ExitCode,output.Result.StdOutput);
         // Do NOT use async/await in this test.
         // Test Sut.RunTaskAsync("localhost");
     }

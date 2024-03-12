@@ -24,10 +24,11 @@ public class PingProcess
         Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
         return new PingResult( process.ExitCode, stringBuilder?.ToString());
     }
-
+    
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
     {
-        throw new NotImplementedException();
+        return new Task<PingResult>(() => Run(hostNameOrAddress));
+        //throw new NotImplementedException();
     }
 
     async public Task<PingResult> RunAsync(
