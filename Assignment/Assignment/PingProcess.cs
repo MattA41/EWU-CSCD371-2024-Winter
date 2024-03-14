@@ -34,6 +34,8 @@ public class PingProcess
     public async Task<PingResult> RunAsync(
         string hostNameOrAddress, CancellationToken cancellationToken = default)
     {   
+        cancellationToken.ThrowIfCancellationRequested();
+        
         PingResult result = await Task.Run<PingResult>(() => Run(hostNameOrAddress));
         
         return result;
