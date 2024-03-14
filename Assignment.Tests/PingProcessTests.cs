@@ -77,7 +77,6 @@ public class PingProcessTests
     }
 
     [TestMethod]
-#pragma warning disable CS1998 // Remove this
     public async Task RunAsync_UsingTpl_Success()
     {
         // DO use async/await in this test.
@@ -86,12 +85,11 @@ public class PingProcessTests
         // Test Sut.RunAsync("localhost");
         AssertValidPingOutput(result);
     }
-#pragma warning restore CS1998 // Remove this
 
 
     [TestMethod]
     [ExpectedException(typeof(AggregateException))]
-    public async void RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrapping()
+    public async Task RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrapping()
     {
         CancellationTokenSource stopToken = new ();
         Task<PingResult> task = Task.Run(() => Sut.RunAsync("localhost", stopToken.Token));
@@ -107,7 +105,7 @@ public class PingProcessTests
     }
 
     [TestMethod]
-    async public Task RunAsync_MultipleHostAddresses_True()
+    public async Task RunAsync_MultipleHostAddresses_True()
     {
         // Pseudo Code - don't trust it!!!
         string[] hostNames = new string[] { "localhost", "localhost", "localhost", "localhost" };
