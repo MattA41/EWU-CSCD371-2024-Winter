@@ -40,10 +40,19 @@ public class PingProcess
         
             return result;
         }
-        catch(Exception e){
-            throw new AggregateException(e, new TaskCanceledException());
+        catch(AggregateException ae){
+            //throw new AggregateException(ae, new TaskCanceledException());
+            foreach (var e in ae.Flatten().InnerExceptions)
+            {
+                if (e is TaskCanceledException)
+                {
+                    throw new TaskCanceledException("Task was canceled");
+                }
+            }
         }
-       
+
+        throw new AggregateException("Task did not run there was an error");
+
     }
 
     public async Task<PingResult> RunAsync(params string[] hostNameOrAddresses)
