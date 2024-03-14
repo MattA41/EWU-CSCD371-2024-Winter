@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Assignment.Tests;
@@ -80,7 +81,6 @@ public class PingProcessTests
     public async Task RunAsync_UsingTpl_Success()
     {
         // DO use async/await in this test.
-        //Task<PingResult> task = Sut.RunAsync("localhost");
         PingResult result = await Sut.RunAsync("localhost");
 
         // Test Sut.RunAsync("localhost");
@@ -93,7 +93,9 @@ public class PingProcessTests
     [ExpectedException(typeof(AggregateException))]
     public void RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrapping()
     {
-        
+        CancellationToken stopToken = new CancellationToken();
+        Task<PingResult> task = Task.Run(() => Sut.RunAsync("localhost", stopToken));
+
     }
 
     [TestMethod]
