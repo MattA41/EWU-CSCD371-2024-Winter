@@ -107,7 +107,6 @@ public class PingProcessTests
             CancellationTokenSource stopToken = new();
             await Sut.RunAsync("localhost", stopToken.Token);
             stopToken.Cancel();
-            return task;
         }
         catch (AggregateException ae)
         {
@@ -119,10 +118,6 @@ public class PingProcessTests
                 }
             }
         }
-
-#pragma warning disable CS8603 // Possible null reference return.
-        return null;
-#pragma warning restore CS8603 // Possible null reference return.
 
         // Use exception.Flatten()
     }
