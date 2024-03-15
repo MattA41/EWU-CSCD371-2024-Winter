@@ -37,7 +37,7 @@ public class PingProcess
         try
         {
             cancellationToken.ThrowIfCancellationRequested();
-            PingResult result = await Task.Run<PingResult>(() => Run(hostNameOrAddress));
+            PingResult result = await Task.Run<PingResult>(() => {Run(hostNameOrAddress)}, cancellationToken);
             return result;
         }
         catch (OperationCanceledException)
