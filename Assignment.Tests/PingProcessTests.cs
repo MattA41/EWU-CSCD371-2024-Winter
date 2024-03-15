@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace Assignment.Tests;
 
@@ -89,22 +90,40 @@ public class PingProcessTests
 
     [TestMethod]
     [ExpectedException(typeof(AggregateException))]
-    public async Task RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrapping()
+    public Task RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrapping()
     {
         CancellationTokenSource stopToken = new ();
         Task<PingResult> task = Task.Run(() => Sut.RunAsync("localhost", stopToken.Token));
         stopToken.Cancel();
-        await task;
+        return task;
     }
 
     [TestMethod]
     [ExpectedException(typeof(TaskCanceledException))]
     public async Task RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrappingTaskCanceledException()
     {
-        CancellationTokenSource stopToken = new();
-        Task<PingResult> task = Task.Run(() => Sut.RunAsync("localhost", stopToken.Token));
-        stopToken.Cancel();
-        await task;
+        try
+        {
+            CancellationTokenSource stopToken = new();
+            await Sut.RunAsync("localhost", stopToken.Token);
+            stopToken.Cancel();
+            return task;
+        }
+        catch (AggregateException ae)
+        {
+            foreach (var e in ae.Flatten().InnerExceptions)
+            {
+                if (e is TaskCanceledException)
+                {
+                    throw e;
+                }
+            }
+        }
+
+#pragma warning disable CS8603 // Possible null reference return.
+        return null;
+#pragma warning restore CS8603 // Possible null reference return.
+
         // Use exception.Flatten()
     }
 

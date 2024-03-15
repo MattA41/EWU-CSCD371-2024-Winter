@@ -33,25 +33,16 @@ public class PingProcess
 
     public async Task<PingResult> RunAsync(
         string hostNameOrAddress, CancellationToken cancellationToken = default)
-    {   
-        try{
-            cancellationToken.ThrowIfCancellationRequested();
-             PingResult result = await Task.Run<PingResult>(() => Run(hostNameOrAddress));
-        
-            return result;
+    {
+        if (cancellationToken.IsCancellationRequested)
+        {
+            TaskCanceledException e = new TaskCanceledException();
+            AggregateException ae = new AggregateException(innerExceptions: e);
+            throw ae;
         }
-        catch(AggregateException ae){
-            //throw new AggregateException(ae, new TaskCanceledException());
-            foreach (var e in ae.Flatten().InnerExceptions)
-            {
-                if (e is TaskCanceledException)
-                {
-                    throw new TaskCanceledException("Task was canceled");
-                }
-            }
-        }
+        PingResult result = await Task.Run<PingResult>(() => Run(hostNameOrAddress));
+        return result;
 
-        throw new AggregateException("Task did not run there was an error");
 
     }
 
