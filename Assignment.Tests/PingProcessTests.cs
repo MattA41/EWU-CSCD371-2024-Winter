@@ -23,7 +23,7 @@ public class PingProcessTests
     [TestMethod]
     public void Start_PingProcess_Success()
     {
-        Process process = Process.Start("ping", "-c 4 localhost");
+        Process process = Process.Start("ping", "localhost");
         process.WaitForExit();
         Assert.AreEqual<int>(0, process.ExitCode);
     }
@@ -105,8 +105,9 @@ public class PingProcessTests
         try
         {
             CancellationTokenSource stopToken = new();
-            await Sut.RunAsync("localhost", stopToken.Token);
             stopToken.Cancel();
+            await Sut.RunAsync("localhost", stopToken.Token);
+            
         }
         catch (AggregateException ae)
         {
@@ -115,6 +116,7 @@ public class PingProcessTests
                 if (e is TaskCanceledException)
                 {
                     throw e;
+
                 }
             }
         }

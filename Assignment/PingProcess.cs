@@ -28,7 +28,7 @@ public class PingProcess
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
     {
         return new Task<PingResult>(() => Run(hostNameOrAddress));
-        //throw new NotImplementedException();
+        
     }
 
     public async Task<PingResult> RunAsync(
@@ -37,7 +37,7 @@ public class PingProcess
         try
         {
             cancellationToken.ThrowIfCancellationRequested();
-            PingResult result = await Task.Run<PingResult>(() => {Run(hostNameOrAddress)}, cancellationToken);
+            PingResult result = await Task.Run<PingResult>(() => { return Run(hostNameOrAddress); }, cancellationToken);
             return result;
         }
         catch (OperationCanceledException)
