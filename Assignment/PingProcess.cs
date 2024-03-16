@@ -56,11 +56,12 @@ public class PingProcess
         ParallelQuery<Task<int>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
         {
             Task<PingResult> task = Task.Run<PingResult>(() => { return Run(item); }, cancellationToken);
-            PingResult result = await task;
-            stringBuilder.AppendLine(result.StdOutput);
-            // ...
-
-            await task.WaitAsync(default(CancellationToken));
+            
+            PingResult result = await task.WaitAsync(default(CancellationToken));
+            if (result.StdOutput != null)
+            {
+                stringBuilder.AppendLine(result.StdOutput.Trim());
+            }
             return task.Result.ExitCode;
         });
 
