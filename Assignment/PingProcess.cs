@@ -42,8 +42,8 @@ public class PingProcess
         }
         catch (OperationCanceledException)
         {
-            TaskCanceledException e = new TaskCanceledException();
-            AggregateException ae = new AggregateException(innerExceptions: e);
+            TaskCanceledException e = new();
+            AggregateException ae = new(innerExceptions: e);
             throw ae;
         }
 

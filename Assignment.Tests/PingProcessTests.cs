@@ -137,7 +137,7 @@ public class PingProcessTests
 
     [TestMethod]
 #pragma warning disable CS1998 // Remove this
-    async public Task RunLongRunningAsync_UsingTpl_Success()
+    public async Task RunLongRunningAsync_UsingTpl_Success()
     {
         PingResult result = default;
         // Test Sut.RunLongRunningAsync("localhost");
