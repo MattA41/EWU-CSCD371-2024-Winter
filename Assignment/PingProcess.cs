@@ -53,20 +53,24 @@ public class PingProcess
         IEnumerable<string> hostNameOrAddresses, CancellationToken cancellationToken = default)
     {
         StringBuilder? stringBuilder = new();
+        int total;
         ParallelQuery<Task<int>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
         {
             PingResult result = await RunAsync(item);
             
             if (result.StdOutput != null)
             {
-                stringBuilder.AppendLine(result.StdOutput.Trim());
+                lock(stringBuilder){
+                    total += result.ExitCode;
+                    stringBuilder.AppendLine(result.StdOutput.Trim());
+                }
             }
             return result.ExitCode;
         });
 
         await Task.WhenAll(all);
-        int total = all.Aggregate(0, (total, item) => total + item.Result);
-        return new PingResult(total, stringBuilder?.ToString());
+        //int total = all.Aggregate(0, (total, item) => total + item.Result);
+        return new PingResult(total, stringBuilder?.ToString().Trim());
     }
 
     public async Task<PingResult> RunLongRunningAsync(
