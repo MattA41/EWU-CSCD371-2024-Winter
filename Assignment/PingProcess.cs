@@ -53,7 +53,7 @@ public class PingProcess
         IEnumerable<string> hostNameOrAddresses, CancellationToken cancellationToken = default)
     {
         StringBuilder? stringBuilder = new();
-        int total;
+        int total = 0;
         ParallelQuery<Task<int>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
         {
             PingResult result = await RunAsync(item);
