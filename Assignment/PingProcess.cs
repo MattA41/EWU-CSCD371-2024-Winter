@@ -56,7 +56,7 @@ public class PingProcess
         int total = 0;
         ParallelQuery<Task<int>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
         {
-            PingResult result = await RunAsync(item);
+            PingResult result = await RunAsync(item, cancellationToken);
             
             if (result.StdOutput != null)
             {
