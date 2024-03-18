@@ -76,9 +76,17 @@ public class PingProcess
     public async Task<PingResult> RunLongRunningAsync(
         string hostNameOrAddress, CancellationToken cancellationToken = default)
     {
-        Task task = null!;
-        await task;
-        throw new NotImplementedException();
+        StartInfo.Arguments = hostNameOrAddress;
+        StringBuilder? stringBuilder = new();
+        void updateStdOutput(string? line) =>
+            (stringBuilder??=new StringBuilder()).AppendLine(line);
+        Task<PingResult> task = Task.Factory.StartNew<PingResult>(() => 
+            {
+                Process process = RunProcessInternal(StartInfo, updateStdOutput, default, cancellationToken);
+                return new PingResult(process.ExitCode, stringBuilder.ToString());
+            }, 
+            cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Current);
+            return await task;
     }
 
     private Process RunProcessInternal(
