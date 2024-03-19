@@ -1,5 +1,6 @@
 ﻿// This code was originally sourced from https://github.com/PowerShell/PowerShell/blob/main/src/System.Management.Automation/engine/regex.cs
 // and then modified to remove of PowerShell specific elements.
+// Code generated ... DO NOT EDIT.
 #nullable disable // Nullable not supported in this legacy file.
 
 using System;
