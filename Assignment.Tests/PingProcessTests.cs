@@ -23,9 +23,21 @@ public class PingProcessTests
     [TestMethod]
     public void Start_PingProcess_Success()
     {
-        Process process = Process.Start("ping", "-c 4 localhost");
-        process.WaitForExit();
-        Assert.AreEqual<int>(0, process.ExitCode);
+        OperatingSystem os = Environment.OSVersion;
+        if (os.Platform == PlatformID.Win32NT)
+        {
+            Process process = Process.Start("ping", "localhost");
+            process.WaitForExit();
+            Assert.AreEqual<int>(0, process.ExitCode);
+        }
+        else
+        {
+            Process process = Process.Start("ping", "-c 4 localhost");
+            process.WaitForExit();
+            Assert.AreEqual<int>(0, process.ExitCode);
+        }
+        
+        
     }
 
     /*[TestMethod]
