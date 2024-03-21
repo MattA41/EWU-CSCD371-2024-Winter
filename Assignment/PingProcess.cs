@@ -73,7 +73,7 @@ public class PingProcess
         return new PingResult(total, stringBuilder?.ToString().Trim());
     }
 
-    public async Task<PingResult> RunLongRunningAsync(
+    public async Task<PingResult> RunLongRunningAsync(ProcessStartInfo StartInfo,
         string hostNameOrAddress, CancellationToken cancellationToken = default)
     {
         StartInfo.Arguments = hostNameOrAddress;

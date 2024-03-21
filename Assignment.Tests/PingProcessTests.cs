@@ -163,7 +163,12 @@ public class PingProcessTests
     [TestMethod]
     public async Task RunLongRunningAsync_UsingTpl_Success()
     {
-        PingResult result = await Sut.RunLongRunningAsync("localhost");
+        ProcessStartInfo startInfo = new("ping");
+        if (IsUnix)
+        {
+            startInfo = new ("ping", "-c 4 localhost");
+        }
+        PingResult result = await Sut.RunLongRunningAsync(startInfo,"localhost");
         // Test Sut.RunLongRunningAsync("localhost");
         AssertValidPingOutput(result);
     }
