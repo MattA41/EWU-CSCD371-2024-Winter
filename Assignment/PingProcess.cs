@@ -21,7 +21,6 @@ public class PingProcess
     {
         string pingArg = Environment.OSVersion.Platform is PlatformID.Unix ? "-c" : "-n";
         StartInfo.Arguments = $"{pingArg} 4 {hostNameOrAddress}";
-        StartInfo.Arguments = hostNameOrAddress;
         StringBuilder? stringBuilder = null;
         void updateStdOutput(string? line) =>
             (stringBuilder??=new StringBuilder()).AppendLine(line);
@@ -80,7 +79,8 @@ public class PingProcess
     public async Task<PingResult> RunLongRunningAsync(ProcessStartInfo StartInfo,
         string hostNameOrAddress, CancellationToken cancellationToken = default)
     {
-        StartInfo.Arguments = hostNameOrAddress;
+        string pingArg = Environment.OSVersion.Platform is PlatformID.Unix ? "-c" : "-n";
+        StartInfo.Arguments = $"{pingArg} 4 {hostNameOrAddress}";
         StringBuilder? stringBuilder = new();
         void updateStdOutput(string? line) =>
             (stringBuilder??=new StringBuilder()).AppendLine(line);
