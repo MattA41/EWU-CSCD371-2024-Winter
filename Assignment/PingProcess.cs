@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,10 +14,13 @@ public record struct PingResult(int ExitCode, string? StdOutput);
 
 public class PingProcess
 {
+    public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
     private ProcessStartInfo StartInfo { get; } = new("ping");
 
     public PingResult Run(string hostNameOrAddress)
     {
+        string pingArg = Environment.OSVersion.Platform is PlatformID.Unix ? "-c" : "-n";
+        StartInfo.Arguments = $"{pingArg} 4 {hostNameOrAddress}";
         StartInfo.Arguments = hostNameOrAddress;
         StringBuilder? stringBuilder = null;
         void updateStdOutput(string? line) =>
