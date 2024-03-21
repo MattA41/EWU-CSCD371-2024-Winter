@@ -13,18 +13,31 @@ namespace Assignment.Tests;
 public class PingProcessTests
 {
     PingProcess Sut { get; set; } = new();
+    private bool IsUnix { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    //will never be null as it is set in tes initialize
+    private string PingOutputLikeExpression { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     [TestInitialize]
     public void TestInitialize()
     {
+        IsUnix = Environment.OSVersion.Platform is PlatformID.Unix;
         Sut = new();
+        if (IsUnix)
+        {
+            PingOutputLikeExpression = PingOutputLikeExpressionUnix;
+        }
+        else
+        {
+            PingOutputLikeExpression = PingOutputLikeExpressionWindows;
+        }
     }
 
     [TestMethod]
     public void Start_PingProcess_Success()
     {
-        OperatingSystem os = Environment.OSVersion;
-        if (os.Platform == PlatformID.Win32NT)
+        if (IsUnix == false)
         {
             Process process = Process.Start("ping", "localhost");
             process.WaitForExit();
@@ -40,25 +53,24 @@ public class PingProcessTests
         
     }
 
-    /*[TestMethod]
+    [TestMethod]
     public void Run_GoogleDotCom_Success()
     {
+        int expectedExitCode = Environment.GetEnvironmentVariable("GITHUB_ACTIONS") is not null || IsUnix ? 1 : 0;
         int exitCode = Sut.Run("google.com").ExitCode;
-        Assert.AreEqual<int>(0, exitCode);
-    }*/
+        Assert.AreEqual<int>(expectedExitCode, exitCode);
+    }
 
 
     [TestMethod]
     public void Run_InvalidAddressOutput_Success()
     {
+        (string expectedOutput, int expectedExitCode) = IsUnix ? ("ping: badaddress: Temporary failure in name resolution", 2) : ("Ping request could not find host badaddress. Please check the name and try again.", 1);
         (int exitCode, string? stdOutput) = Sut.Run("badaddress");
         Assert.IsFalse(string.IsNullOrWhiteSpace(stdOutput));
         stdOutput = WildcardPattern.NormalizeLineEndings(stdOutput!.Trim());
-        Assert.AreEqual<string?>(
-            "Ping request could not find host badaddress. Please check the name and try again.".Trim(),
-            stdOutput,
-            $"Output is unexpected: {stdOutput}");
-        Assert.AreEqual<int>(1, exitCode);
+        Assert.AreEqual<string?>(expectedOutput, stdOutput, $"Output is unexpected: {stdOutput}");
+        Assert.AreEqual<int>(expectedExitCode, exitCode);
     }
 
     [TestMethod]
@@ -73,7 +85,10 @@ public class PingProcessTests
     //testing to see if the task ended correctly
     {
          Task<PingResult> output = Sut.RunTaskAsync("localhost");
-        output.Start();
+         if (IsUnix == false)
+         {
+             output.Start();
+         }
          AssertValidPingOutput(output.Result);
         // Do NOT use async/await in this test.
         // Test Sut.RunTaskAsync("localhost");
@@ -164,7 +179,7 @@ public class PingProcessTests
         Assert.AreNotEqual(lineCount, numbers.Count()+1);
     }
 
-    readonly string PingOutputLikeExpression = @"
+    readonly string PingOutputLikeExpressionWindows = @"
 Pinging * with 32 bytes of data:
 Reply from ::1: time<*
 Reply from ::1: time<*
@@ -175,6 +190,17 @@ Ping statistics for ::1:
     Packets: Sent = *, Received = *, Lost = 0 (0% loss),
 Approximate round trip times in milli-seconds:
     Minimum = *, Maximum = *, Average = *".Trim();
+
+    readonly string PingOutputLikeExpressionUnix = @"
+PING * * bytes*
+64 bytes from * (*): icmp_seq=* ttl=* time=* ms
+64 bytes from * (*): icmp_seq=* ttl=* time=* ms
+64 bytes from * (*): icmp_seq=* ttl=* time=* ms
+64 bytes from * (*): icmp_seq=* ttl=* time=* ms
+--- * ping statistics ---
+* packets transmitted, * received, *% packet loss, time *ms
+rtt min/avg/max/mdev = */*/*/* ms
+".Trim();
     private void AssertValidPingOutput(int exitCode, string? stdOutput)
     {
         Assert.IsFalse(string.IsNullOrWhiteSpace(stdOutput));
