@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Assignment;
 
-public record struct PingResult(int ExitCode, string? StdOutput);
+public record struct PingResult(int ExitCode, string? StdOutput, string? StdError);
 
 public class PingProcess
 {
@@ -21,11 +21,14 @@ public class PingProcess
     {
         string pingArg = Environment.OSVersion.Platform is PlatformID.Unix ? "-c" : "-n";
         StartInfo.Arguments = $"{pingArg} 4 {hostNameOrAddress}";
-        StringBuilder? stringBuilder = null;
+        StringBuilder? stringBuilderOutput = null;
+        StringBuilder? stringBuilderError = null;
         void updateStdOutput(string? line) =>
-            (stringBuilder??=new StringBuilder()).AppendLine(line);
-        Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
-        return new PingResult( process.ExitCode, stringBuilder?.ToString());
+            (stringBuilderOutput??=new StringBuilder()).AppendLine(line);
+        void updateStdErr(string? line) => 
+            (stringBuilderError??=new StringBuilder()).AppendLine(line);
+        Process process = RunProcessInternal(StartInfo, updateStdOutput, updateStdErr, default);
+        return new PingResult( process.ExitCode, stringBuilderOutput?.ToString(), stringBuilderError?.ToString());
     }
     
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
@@ -73,7 +76,7 @@ public class PingProcess
 
         await Task.WhenAll(all);
         //int total = all.Aggregate(0, (total, item) => total + item.Result);
-        return new PingResult(total, stringBuilder?.ToString().Trim());
+        return new PingResult(total, stringBuilder?.ToString().Trim(), default);
     }
 
     public async Task<PingResult> RunLongRunningAsync(ProcessStartInfo StartInfo,
@@ -82,12 +85,15 @@ public class PingProcess
         string pingArg = Environment.OSVersion.Platform is PlatformID.Unix ? "-c" : "-n";
         StartInfo.Arguments = $"{pingArg} 4 {hostNameOrAddress}";
         StringBuilder? stringBuilder = new();
+        StringBuilder? stringBuilderError = new();
         void updateStdOutput(string? line) =>
             (stringBuilder??=new StringBuilder()).AppendLine(line);
+        void updateStdErr(string? line) => 
+            (stringBuilderError??=new StringBuilder()).AppendLine(line);
         Task<PingResult> task = Task.Factory.StartNew<PingResult>(() => 
             {
-                Process process = RunProcessInternal(StartInfo, updateStdOutput, default, cancellationToken);
-                return new PingResult(process.ExitCode, stringBuilder.ToString());
+                Process process = RunProcessInternal(StartInfo, updateStdOutput, updateStdErr, cancellationToken);
+                return new PingResult(process.ExitCode, stringBuilder.ToString(), default);
             }, 
             cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Current);
             return await task;
