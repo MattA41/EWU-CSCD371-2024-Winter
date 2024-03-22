@@ -84,16 +84,16 @@ public class PingProcess
     {
         string pingArg = Environment.OSVersion.Platform is PlatformID.Unix ? "-c" : "-n";
         StartInfo.Arguments = $"{pingArg} 4 {hostNameOrAddress}";
-        StringBuilder? stringBuilder = new();
+        StringBuilder? stringBuilderOutput = new();
         StringBuilder? stringBuilderError = new();
         void updateStdOutput(string? line) =>
-            (stringBuilder??=new StringBuilder()).AppendLine(line);
+            (stringBuilderOutput??=new StringBuilder()).AppendLine(line);
         void updateStdErr(string? line) => 
             (stringBuilderError??=new StringBuilder()).AppendLine(line);
         Task<PingResult> task = Task.Factory.StartNew<PingResult>(() => 
             {
                 Process process = RunProcessInternal(StartInfo, updateStdOutput, updateStdErr, cancellationToken);
-                return new PingResult(process.ExitCode, stringBuilder.ToString(), default);
+                return new PingResult(process.ExitCode, stringBuilderOutput.ToString(), default);
             }, 
             cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Current);
             return await task;
